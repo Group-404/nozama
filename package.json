@@ -1,0 +1,15 @@
+{
+  "name": "R-U-Going",
+  "version": "0.0.1",
+  "description": "Second WDI Project, front-end",
+  "main": "app.js",
+  "scripts": {},
+  "author": "Lara Parvinsmith, Kristen Kehlenbeck, Greg Holmes, Joe Levinger",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.5",
+    "jquery": "^2.1.4"
+  },
+  "devDependencies": {
+  }
+}
