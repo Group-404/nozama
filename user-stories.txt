@@ -1,0 +1,14 @@
+Minimum viable product:
+As a user, I want to be able to browse all products.
+I want to be able to read more about a specific product.
+I want to be able to store items I’m interested in a shopping cart.
+I want a convenient way to pay for my items.
+I want to be able to login and have past orders stored on my account.
+
+Would be nice:
+As a user, I want to be able to browse products sorted by price.
+I want to be able to comment on a specific product.
+I want an email confirmation when I buy my items.
+
+Reach goal:
+As a user, I want to be able to search for a product by name.
