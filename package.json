@@ -8,8 +8,8 @@
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^3.3.5",
+    "handlebars": "^3.0.3",
     "jquery": "^2.1.4"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
