@@ -10,9 +10,23 @@
 </head>
 <body>
 
+<div id="products"></div>
+<button id="show-products">Show Products</button>
+
+<!-- Handlebars list of items -->
+  <script id="product-template" type="text/x-handlebars-template">
+    {{#each products}}
+      <h3>{{name}}</h3>
+      <p>{{price}}</p>
+        <button class="btn btn-default view-item" data-id={{id}}>View item</button>
+        <button class="btn btn-default add-to-cart" data-id={{id}}>Add to cart</button>
+    {{/each}}
+  </script>
+
 <script src="node_modules/jquery/dist/jquery.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="node_modules/handlebars/dist/handlebars.js"></script>
+<script src="assets/scripts/view.js" type="text/javascript"></script>
 <script src="assets/scripts/main.js" type="text/javascript"></script>
 
 </body>
