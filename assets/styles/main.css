@@ -86,7 +86,7 @@ a.navlink {
   color: black;
   text-decoration: none;
   font-size: 20px;
-  display:inline-block;
+  display: inline-block;
 }
 
 a.navlink:hover {
@@ -99,6 +99,15 @@ a.navlink:hover {
     top: 400px;
 }
 
+.pageheader {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: green;
+  margin-top: 100px;
+  padding: 50px 0;
+}
+
 #bikepage {
   background-color: white;
   height: 700px;
@@ -109,15 +118,14 @@ a.navlink:hover {
   width: 50%;
 }
 
-.title {
+.biketitle {
   text-align: center;
   font-size: 20px;
   font-weight: 700;
   color: green;
-  margin-top: 150px;
 }
 
-.description {
+.bikedescription {
   margin-left: 50px;
   margin-right: 50px;
   font-size: 16px;
@@ -125,7 +133,7 @@ a.navlink:hover {
   color: black;
 }
 
-.bikecentered {
+.centered {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -133,6 +141,53 @@ a.navlink:hover {
 
 .buttoncentered {
   text-align: center;
+}
+
+#accessoriespage {
+  background-color: white;
+  height: 1000px;
+}
+
+.accessoriespage {
+  float: left;
+  width: 25%;
+}
+
+a.accessorieslink {
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+}
+
+a.accessorieslink:hover {
+  color: gray;
+  text-decoration: none;
+}
+
+.accessoriesheader {
+  display: block;
+  margin-left: 30px;
+  font-size: 20px;
+  font-weight: 700;
+  color: green;
+}
+
+hr {
+  height: 12px;
+  border: 0;
+  box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+  margin: 0 30px;
+  padding-bottom: 20px;
+}
+
+.noblankline {
+  margin: -3px;
+}
+
+.spacer {
+  padding-top: 300px;
 }
 
 footer {

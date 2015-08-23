@@ -13,6 +13,7 @@ $(document).ready(function() {
 
   $('#carousel').show();
   $('#bikepage').hide();
+  $('#accessoriespage').hide();
 
   //////////////////////////////////////////////
   // BEGIN: show appropriate page; hide the rest
@@ -22,12 +23,21 @@ $(document).ready(function() {
     event.preventDefault();
     $('#carousel').show();
     $('#bikepage').hide();
+    $('#accessoriespage').hide();
   });
 
   $('.bicycles').on('click', function(event) {
     event.preventDefault();
-    $('#carousel').hide();
     $('#bikepage').show();
+    $('#carousel').hide();
+    $('#accessoriespage').hide();
+  });
+
+  $('.accessories').on('click', function(event) {
+    event.preventDefault();
+    $('#carousel').hide();
+    $('#bikepage').hide();
+    $('#accessoriespage').show();
   });
 
   //////////////////////////////////////////////
