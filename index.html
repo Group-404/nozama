@@ -10,14 +10,18 @@
 </head>
 <body>
 
+<button id="show-bikes" class="btn btn-default">Show Bicycles</button>
+<button id="show-accessories" class="btn btn-default">Show Accessories</button>
 <div id="products"></div>
-<button id="show-products">Show Products</button>
 
 <!-- Handlebars list of items -->
   <script id="product-template" type="text/x-handlebars-template">
     {{#each products}}
       <h3>{{name}}</h3>
       <p>{{price}}</p>
+      {{#if sale}}
+      <p>SALE PRICE: {{sale}}</p>
+      {{/if}}
         <button class="btn btn-default view-item" data-id={{id}}>View item</button>
         <button class="btn btn-default add-to-cart" data-id={{id}}>Add to cart</button>
     {{/each}}
