@@ -86,6 +86,7 @@ a.navlink {
   color: black;
   text-decoration: none;
   font-size: 20px;
+  display:inline-block;
 }
 
 a.navlink:hover {
@@ -128,6 +129,10 @@ a.navlink:hover {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.buttoncentered {
+  text-align: center;
 }
 
 footer {

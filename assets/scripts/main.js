@@ -18,7 +18,13 @@ $(document).ready(function() {
   // BEGIN: show appropriate page; hide the rest
   //////////////////////////////////////////////
 
-  $('#bicycles').on('click', function(event) {
+   $('#logo').on('click', function(event) {
+    event.preventDefault();
+    $('#carousel').show();
+    $('#bikepage').hide();
+  });
+
+  $('.bicycles').on('click', function(event) {
     event.preventDefault();
     $('#carousel').hide();
     $('#bikepage').show();
