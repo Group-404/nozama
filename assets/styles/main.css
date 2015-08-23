@@ -250,6 +250,13 @@ input[type=password] {
   margin: 0 0 10px 40px;
 }
 
+select {
+  font-size: 15px;
+  border: 1px solid green;
+  border-radius: 5px;
+  margin: 0 -16px 10px 40px;
+}
+
 .marginRegisterLogin {
   font-size: 16px;
   margin: 20px 0 40px 40px;
@@ -258,6 +265,18 @@ input[type=password] {
 #loginpage {
   background-color: white;
   height: 600px;
+}
+
+#cartpage {
+  background-color: white;
+  height: 1100px;
+}
+
+.marginAddCart {
+  font-size: 20px;
+  margin: 40px 0 20px 40px;
+  font-weight: 700;
+  color: green;
 }
 
 footer {

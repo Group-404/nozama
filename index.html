@@ -32,7 +32,7 @@
       <div class="btn-group nav accessories"><a class="navlink" href="#">Accessories</a></div>
       <div class="btn-group nav register"><a class="navlink" href="#">Register</a></div>
       <div class="btn-group nav login"><a class="navlink" href="#">Login</a></div>
-      <div class="btn-group headercart" role="group" aria-label="cart"><a href="#"><img src="http://nozama.s3-us-west-2.amazonaws.com/cart.png" alt=""></a></div>
+      <div class="btn-group headercart cart" role="group" aria-label="cart"><a href="#"><img src="http://nozama.s3-us-west-2.amazonaws.com/cart.png" alt=""></a></div>
     </div>
   </header>
 
@@ -311,6 +311,67 @@
   <!--
   ************************************************
   * END: login page
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * START: cart page
+  ************************************************
+   -->
+
+  <div id="cartpage">
+    <div>
+      <div class="pageheader">Shopping Cart</div>
+      <p class="marginAddCart">Shipping Address:</p>
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name">
+      <label for="address">Address:</label>
+      <input type="text" name="address1" id="address1">
+      <label for="city">City:</label>
+      <input type="text" name="city" id="city">
+      <label for="state">State/Province:</label>
+      <input type="text" name="state" id="state">
+      <label for="zip">Zip/Postal Code:</label>
+      <input type="text" name="zip" id="zip">
+      <p class="marginAddCart">Payment Method:</p>
+      <label for="creditcard">Credit Card:</label>
+      <input type="text" name="creditcard" id="creditcard">
+      <label for="expdate">Expiration Date:</label>
+      <select name="CCExpiresMonth">
+        <option value="" selected>--Month--
+        <option value="01">January
+        <option value="02">February
+        <option value="03">March
+        <option value="04">April
+        <option value="05">May
+        <option value="06">June
+        <option value="07">July
+        <option value="08">August
+        <option value="09">September
+        <option value="10">October
+        <option value="11">November
+        <option value="12">December
+      </select>
+      <select name="CCExpiresYear">
+      <option value="" selected>--Year--
+        <option value="15">2015
+        <option value="16">2016
+        <option value="17">2017
+        <option value="18">2018
+        <option value="19">2019
+        <option value="20">2020
+      </select>
+
+      <label for="securitycode">Security Code:</label>
+      <input type="text" name="securitycode" id="securitycode">
+      <a id="login-submit" class="btn btn-md btn-custom marginRegisterLogin" href="#" role="button">Submit</a>
+    </div>
+  </div>
+
+  <!--
+  ************************************************
+  * END: cart page
   ************************************************
    -->
 

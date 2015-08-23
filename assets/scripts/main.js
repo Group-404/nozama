@@ -30,6 +30,7 @@ $(document).ready(function() {
     $('#showpage').hide();
     $('#registerpage').hide();
     $('#loginpage').hide();
+    $('#cartpage').hide();
   });
 
   $('.bicycles').on('click', function(event) {
@@ -40,6 +41,7 @@ $(document).ready(function() {
     $('#showpage').hide();
     $('#registerpage').hide();
     $('#loginpage').hide();
+    $('#cartpage').hide();
   });
 
   $('.accessories').on('click', function(event) {
@@ -50,6 +52,7 @@ $(document).ready(function() {
     $('#showpage').hide();
     $('#registerpage').hide();
     $('#loginpage').hide();
+    $('#cartpage').hide();
   });
 
   $('.show').on('click', function(event) {
@@ -60,6 +63,7 @@ $(document).ready(function() {
     $('#accessoriespage').hide();
     $('#registerpage').hide();
     $('#loginpage').hide();
+    $('#cartpage').hide();
   });
 
   $('.register').on('click', function(event) {
@@ -70,6 +74,7 @@ $(document).ready(function() {
     $('#accessoriespage').hide();
     $('#showpage').hide();
     $('#loginpage').hide();
+    $('#cartpage').hide();
   });
 
   $('.login').on('click', function(event) {
@@ -80,6 +85,18 @@ $(document).ready(function() {
     $('#accessoriespage').hide();
     $('#showpage').hide();
     $('#registerpage').hide();
+    $('#cartpage').hide();
+  });
+
+  $('.cart').on('click', function(event) {
+    event.preventDefault();
+    $('#cartpage').show();
+    $('#carousel').hide();
+    $('#bikepage').hide();
+    $('#accessoriespage').hide();
+    $('#showpage').hide();
+    $('#registerpage').hide();
+    $('#loginpage').hide();
   });
 
   //////////////////////////////////////////////
