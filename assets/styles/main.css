@@ -220,10 +220,45 @@ a.showlink {
   text-decoration: none;
 }
 
-/*a.showlink:hover {
-  color: gray;
-  text-decoration: none;
-}*/
+#registerpage {
+  background-color: white;
+  height: 600px;
+}
+
+label {
+  margin-left: 40px;
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+input[type=text] {
+  padding: 5px;
+  display: block;
+  font-size: 20px;
+  border: 1px solid green;
+  border-radius: 5px;
+  margin: 0 0 10px 40px;
+}
+
+input[type=password] {
+  padding: 5px;
+  display: block;
+  font-size: 20px;
+  border: 1px solid green;
+  border-radius: 5px;
+  margin: 0 0 10px 40px;
+}
+
+.marginRegisterLogin {
+  font-size: 16px;
+  margin: 20px 0 40px 40px;
+}
+
+#loginpage {
+  background-color: white;
+  height: 600px;
+}
 
 footer {
   width: 100%;
