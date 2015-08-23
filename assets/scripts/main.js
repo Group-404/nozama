@@ -14,6 +14,7 @@ $(document).ready(function() {
   $('#carousel').show();
   $('#bikepage').hide();
   $('#accessoriespage').hide();
+  $('#showpage').hide();
 
   //////////////////////////////////////////////
   // BEGIN: show appropriate page; hide the rest
@@ -24,6 +25,7 @@ $(document).ready(function() {
     $('#carousel').show();
     $('#bikepage').hide();
     $('#accessoriespage').hide();
+    $('#showpage').hide();
   });
 
   $('.bicycles').on('click', function(event) {
@@ -31,13 +33,24 @@ $(document).ready(function() {
     $('#bikepage').show();
     $('#carousel').hide();
     $('#accessoriespage').hide();
+    $('#showpage').hide();
   });
 
   $('.accessories').on('click', function(event) {
     event.preventDefault();
+    $('#accessoriespage').show();
     $('#carousel').hide();
     $('#bikepage').hide();
-    $('#accessoriespage').show();
+    $('#showpage').hide();
+  });
+
+  $('.show').on('click', function(event) {
+    event.preventDefault();
+    $('#showpage').show();
+    $('#carousel').hide();
+    $('#bikepage').hide();
+    $('#accessoriespage').hide();
+
   });
 
   //////////////////////////////////////////////

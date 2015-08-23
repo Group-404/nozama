@@ -139,6 +139,10 @@ a.navlink:hover {
   margin-right: auto;
 }
 
+.textcentered {
+  text-align: center;
+}
+
 .buttoncentered {
   text-align: center;
 }
@@ -189,6 +193,37 @@ hr {
 .spacer {
   padding-top: 300px;
 }
+
+#showpage {
+  background-color: white;
+  height: 700px;
+}
+
+.showpage {
+  float: left;
+  width: 100%;
+}
+
+#sizeRadios {
+  text-align: center;
+}
+
+input[type=radio] {
+  margin: 0 10px 0 30px;
+}
+
+.blankline {
+  padding-top: 20px;
+}
+
+a.showlink {
+  text-decoration: none;
+}
+
+/*a.showlink:hover {
+  color: gray;
+  text-decoration: none;
+}*/
 
 footer {
   width: 100%;
