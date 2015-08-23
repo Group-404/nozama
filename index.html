@@ -4,52 +4,151 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>nozama</title>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:400,300,700' rel='stylesheet' type='text/css'>
   <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="assets/styles/carousel.css">
 </head>
 <body>
 
     <!--
     ************************************************
-    * header
+    * START: header
     ************************************************
      -->
 
     <header>
-      <div id="siteName">
-        nozama
-      </div>
       <div id="logo">
-        <a href="#" class="linkHomeBreadcrumb">
+        <a href="#">
           <img src="http://nozama.s3-us-west-2.amazonaws.com/penny-farthing.png" alt="">
         </a>
       </div>
-      <div class="btn-toolbar" role="toolbar" aria-label="toolbar">
-        <div class="btn-group btn-lg btn-primary" role="group" aria-label="register">register</div>
-        <div class="btn-group" role="group" aria-label="login">login</div>
-        <div class="btn-group" role="group" aria-label="cart">view cart</div>
-        <div class="btn-group btn-lg btn-primary" role="group" aria-label="register">Sign up today</div>
+      <div id="sitename">
+        NOZAMA
       </div>
-      <!-- <div id="buttonid">
-        <div class="btn btn-lg btn-primary" href="#" role="button">Sign up today</div>
-      </div> -->
-
-      <!-- <div id="headerButtons">
-        <a href='#' class="linkRegister">
-          <button class="headerButtons" id="registration-button">Register</button>
-        </a>
-        <a href='#' class="linkLogin">
-          <button class="headerButtons" id="login-button">Login</button>
-        </a>
-      </div> -->
+      <div id="headerbuttons">
+        <div id="bicycles" class="btn-group nav"><a class="navlink" href="#">Bicycles</a></div>
+        <div class="btn-group nav"><a class="navlink" href="#">Accessories</a></div>
+        <div class="btn-group nav"><a class="navlink" href="#">Register</a></div>
+        <div class="btn-group nav"><a class="navlink" href="#">Login</a></div>
+        <div class="btn-group headercart" role="group" aria-label="cart"><a href="#"><img src="http://nozama.s3-us-west-2.amazonaws.com/cart.png" alt=""></a></div>
+      </div>
     </header>
+
+    <!--
+    ************************************************
+    * END: header
+    ************************************************
+     -->
+
+    <!--
+    ************************************************
+    * START: home page
+    ************************************************
+     -->
+
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel" data-slide-to="1"></li>
+        <li data-target="#carousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="http://nozama.s3-us-west-2.amazonaws.com/bike1.jpg" alt="Slide 1" />
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Seek adventure, but stay safe.</h1>
+              <p><a class="btn btn-lg btn-custom" href="#" role="button">Buy a Helmet</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="http://nozama.s3-us-west-2.amazonaws.com/bike2.jpg" alt="Slide 2" />
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Explore exotic lands with new friends.</h1>
+              <p><a class="btn btn-lg btn-custom" href="#" role="button">Buy a Bike</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="http://nozama.s3-us-west-2.amazonaws.com/bike3.jpg" alt="Slide 3" />
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Experience the ride of your life.</h1>
+              <p><a class="btn btn-lg btn-custom" href="#" role="button">Buy an Accessory</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#carousel" class="left carousel-control" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a href="#carousel" class="right carousel-control" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div>
+
+    <!--
+    ************************************************
+    * END: home page
+    ************************************************
+     -->
+
+    <!--
+    ************************************************
+    * START: bicycles page
+    ************************************************
+     -->
+
+
+    <div id="bikepage">
+      <div class="bikepage">
+        <p class="title">Breezer Downtown 5 Bike</p>
+        <p class="description">The Breezer Downtown 5 Bike is the ideal ride for your urban adventures around town, whether it be a long expedition or a simple ride to work.</p>
+        <img class="bikecentered" src="http://nozama.s3-us-west-2.amazonaws.com/bike4.jpg" alt="" />
+      </div>
+
+      <div class="bikepage">
+        <p class="title">Schwinn City 3 Bike 2013 - Womens</p>
+        <p class="description">In a classic design with modern lightweight performance, the Schwinn City 3 Bike for women lets you get around town easily and look good doing it.</p>
+        <img class="bikecentered" src="http://nozama.s3-us-west-2.amazonaws.com/bike5.jpg" alt="" />
+      </div>
+    </div>
+
+    <!--
+    ************************************************
+    * END: bicycles page
+    ************************************************
+     -->
+
+    <!--
+    ************************************************
+    * START: footer
+    ************************************************
+     -->
+
+    <footer>&copy; 2015 NOZAMA Enterprises, LLC &mdash; All Rights Reserved</footer>
+
+    <!--
+    ************************************************
+    * END: footer
+    ************************************************
+     -->
+
+    <!--
+    ************************************************
+    * START: scripts
+    ************************************************
+     -->
 
 <script src="assets/handlebars-v3.0.3.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="assets/scripts/main.js" type="text/javascript"></script>
+
 </body>
 </html>
