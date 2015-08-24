@@ -288,3 +288,8 @@ footer {
   line-height: 35px;
   color: black;
 }
+
+.strike-thru {
+  color: red;
+  text-decoration: line-through;
+}

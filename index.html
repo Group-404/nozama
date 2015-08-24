@@ -401,12 +401,32 @@
   <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="assets/scripts/ajaxapicalls.js" type="text/javascript"></script>
   <script src="assets/scripts/main.js" type="text/javascript"></script>
+  <script src="assets/scripts/view.js" type="text/javascript"></script>
 
   <!--
   ************************************************
   * END: scripts
   ************************************************
    -->
+
+<button id="show-bikes" class="btn btn-default">Show Bicycles</button>
+<button id="show-accessories" class="btn btn-default">Show Accessories</button>
+<div id="products"></div>
+
+<!-- Handlebars list of items -->
+<!--   <script id="product-template" type="text/x-handlebars-template">
+    {{#each products}}
+      <h3>{{name}}</h3>
+      {{#if sale}}
+      <p class="strike-thru">{{price}}</p>
+      <p>SALE PRICE: {{sale}}</p>
+      {{else}}
+      <p>{{price}}</p>
+      {{/if}}
+        <button class="btn btn-default view-item" data-id={{id}}>View item</button>
+        <button class="btn btn-default add-to-cart" data-id={{id}}>Add to cart</button>
+    {{/each}}
+  </script> -->
 
 </body>
 </html>
