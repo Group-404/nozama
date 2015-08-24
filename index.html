@@ -18,9 +18,11 @@
   <script id="product-template" type="text/x-handlebars-template">
     {{#each products}}
       <h3>{{name}}</h3>
-      <p>{{price}}</p>
       {{#if sale}}
+      <p class="strike-thru">{{price}}</p>
       <p>SALE PRICE: {{sale}}</p>
+      {{else}}
+      <p>{{price}}</p>
       {{/if}}
         <button class="btn btn-default view-item" data-id={{id}}>View item</button>
         <button class="btn btn-default add-to-cart" data-id={{id}}>Add to cart</button>
