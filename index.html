@@ -118,86 +118,8 @@
   ************************************************
    -->
 
-
-  <div id="accessoriespage">
-
-    <div class="pageheader">Accessories</div>
-
-      <div class="accessoriesheader">Helmets</div>
-      <hr>
-
-      <div class="accessoriespage">
-        <a class="accessorieslink show" href="#">
-          <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/helmet_shadow_sm.jpg" alt="" />
-          <p class="noblankline">Giro Reverb Helmet</p>
-          <p class="noblankline">Matte Gray</p>
-          <p>$55.00</p>
-        </a>
-      </div>
-
-      <div class="accessoriespage">
-        <a class="accessorieslink show" href="#">
-          <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/helmet_yellow_sm.jpg" alt="" />
-          <p class="noblankline">Giro Reverb Helmet</p>
-          <p class="noblankline">Highlight Yellow</p>
-          <p>$55.00</p>
-        </a>
-      </div>
-
-      <div class="accessoriespage">
-        <a class="accessorieslink show" href="#">
-          <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/helmet_white_sm.jpg" alt="" />
-          <p class="noblankline">Giro Reverb Helmet</p>
-          <p class="noblankline">Matte White CA Bear</p>
-          <p>$55.00</p>
-        </a>
-      </div>
-
-      <div class="accessoriespage">
-        <a class="accessorieslink show" href="#">
-          <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/helmet_red_sm.jpg" alt="" />
-          <p class="noblankline">Giro Reverb Helmet</p>
-          <p class="noblankline">Vintage Red</p>
-          <p>$55.00</p>
-        </a>
-      </div>
-
-      <p class="spacer">&nbsp;</p>
-      <p class="accessoriesheader">Locks</p>
-      <hr>
-
-      <div class="accessoriespage show">
-        <a class="accessorieslink" href="#">
-          <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/lock_keeper_sm.jpg" alt="" />
-          <p class="noblankline">Kryptonite Keeper 12 Standard</p>
-          <p>$35.00</p>
-        </a>
-      </div>
-
-      <div class="accessoriespage">
-        <a class="accessorieslink show" href="#">
-          <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/lock_red_sm.jpg" alt="" />
-          <p class="noblankline">Kryptonite Series 2 Mini Ulock - Red</p>
-          <p>$39.00</p>
-        </a>
-      </div>
-
-      <div class="accessoriespage">
-        <a class="accessorieslink show" href="#">
-          <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/lock_white_sm.jpg" alt="" />
-          <p class="noblankline">Kryptonite Series 2 Mini Ulock - White</p>
-          <p>$39.00</p>
-        </a>
-      </div>
-
-      <div class="accessoriespage">
-        <a class="accessorieslink show" href="#">
-          <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/lock_black_sm.jpg" alt="" />
-          <p class="noblankline">Kryptonite Series 2 Mini Ulock - Black</p>
-          <p>$39.00</p>
-        </a>
-      </div>
-
+  <div id="accessoryPage">
+    <div id="accessoryResults"></div>
   </div>
 
   <!--
@@ -360,7 +282,7 @@
    -->
 
   <script id="bicycle-template" type="text/x-handlebars-template">
-    <div id="bikepage">
+    <div id="accessorypage">
       <div class="pageheader">Bicycles</div>
       {{#each bicycles}}
         <div class="bikepage">
@@ -369,8 +291,9 @@
             <p class="bikedescription">{{description}}</p>
             <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/{{thumbnailURL}}" alt="" />
           </a>
-          <p class="buttoncentered show">
-            <a class="btn btn-md btn-custom buttoncentered" data-id={{id}} href="#" role="button">Learn More</a>
+
+          <p class="buttoncentered">
+            <a class="btn btn-md btn-custom buttoncentered show" data-id={{id}} href="#" role="button">Learn More</a>
           </p>
         </div>
       {{/each}}
@@ -380,6 +303,108 @@
   <!--
   ************************************************
   * END: bicycle template
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * START: accessory template
+  ************************************************
+   -->
+
+  <script id="accessory-template" type="text/x-handlebars-template">
+    <div id="accessoriespage">
+      <div class="pageheader">Accessories</div>
+      <div class="accessoriesheader">Helmets</div>
+      <hr>
+
+    </div>
+  </script>
+
+
+
+
+
+
+    <div class="accessoriespage">
+      <a class="accessorieslink show" href="#">
+        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/helmet_shadow_sm.jpg" alt="" />
+        <p class="noblankline">Giro Reverb Helmet</p>
+        <p class="noblankline">Matte Gray</p>
+        <p>$55.00</p>
+      </a>
+    </div>
+
+    <div class="accessoriespage">
+      <a class="accessorieslink show" href="#">
+        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/helmet_yellow_sm.jpg" alt="" />
+        <p class="noblankline">Giro Reverb Helmet</p>
+        <p class="noblankline">Highlight Yellow</p>
+        <p>$55.00</p>
+      </a>
+    </div>
+
+    <div class="accessoriespage">
+      <a class="accessorieslink show" href="#">
+        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/helmet_white_sm.jpg" alt="" />
+        <p class="noblankline">Giro Reverb Helmet</p>
+        <p class="noblankline">Matte White CA Bear</p>
+        <p>$55.00</p>
+      </a>
+    </div>
+
+    <div class="accessoriespage">
+      <a class="accessorieslink show" href="#">
+        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/helmet_red_sm.jpg" alt="" />
+        <p class="noblankline">Giro Reverb Helmet</p>
+        <p class="noblankline">Vintage Red</p>
+        <p>$55.00</p>
+      </a>
+    </div>
+
+    <p class="spacer">&nbsp;</p>
+    <p class="accessoriesheader">Locks</p>
+    <hr>
+
+    <div class="accessoriespage show">
+      <a class="accessorieslink" href="#">
+        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/lock_keeper_sm.jpg" alt="" />
+        <p class="noblankline">Kryptonite Keeper 12 Standard</p>
+        <p>$35.00</p>
+      </a>
+    </div>
+
+    <div class="accessoriespage">
+      <a class="accessorieslink show" href="#">
+        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/lock_red_sm.jpg" alt="" />
+        <p class="noblankline">Kryptonite Series 2 Mini Ulock - Red</p>
+        <p>$39.00</p>
+      </a>
+    </div>
+
+    <div class="accessoriespage">
+      <a class="accessorieslink show" href="#">
+        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/lock_white_sm.jpg" alt="" />
+        <p class="noblankline">Kryptonite Series 2 Mini Ulock - White</p>
+        <p>$39.00</p>
+      </a>
+    </div>
+
+    <div class="accessoriespage">
+      <a class="accessorieslink show" href="#">
+        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/lock_black_sm.jpg" alt="" />
+        <p class="noblankline">Kryptonite Series 2 Mini Ulock - Black</p>
+        <p>$39.00</p>
+      </a>
+    </div>
+
+
+
+
+
+  <!--
+  ************************************************
+  * END: accessory template
   ************************************************
    -->
 
@@ -424,8 +449,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="assets/scripts/ajaxapicalls.js" type="text/javascript"></script>
-  <script src="assets/scripts/main.js" type="text/javascript"></script>
   <script src="assets/scripts/view.js" type="text/javascript"></script>
+  <script src="assets/scripts/main.js" type="text/javascript"></script>
 
   <!--
   ************************************************

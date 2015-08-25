@@ -57,6 +57,7 @@ $(document).ready(function() {
     $('#registerpage').hide();
     $('#loginpage').hide();
     $('#cartpage').hide();
+
   });
 
   $('.accessories').on('click', function(event) {
@@ -70,7 +71,8 @@ $(document).ready(function() {
     $('#cartpage').hide();
   });
 
-  $('.show').on('click', function(event) {
+  function classShowClickHandler1(event) {
+    console.log("show click");
     event.preventDefault();
     $('#showpage').show();
     $('#carousel').hide();
@@ -79,7 +81,9 @@ $(document).ready(function() {
     $('#registerpage').hide();
     $('#loginpage').hide();
     $('#cartpage').hide();
-  });
+  }
+
+  $('.show').on('click', classShowClickHandler1);
 
   $('.register').on('click', function(event) {
     event.preventDefault();
@@ -123,26 +127,38 @@ $(document).ready(function() {
   //////////////////////////////////////////////
 
   $('.bicycles').on('click', function() {
+    console.log('Bike Clicked')
     var products = data.products;
     var bicycles = $.grep(products, function(e) { return e.category === 'bicycles';
     });
     $('#bicycleResults').html(View.bicycleIndexHTML({bicycles: bicycles}));
+    $('.show').on('click', classShowClickHandler1);
+    $('.show').on('click', classShowClickHandler2);
   });
 
   $('.accessories').on('click', function() {
+    console.log ('accessories button');
     var products = data.products;
     var accessories = $.grep(products, function(e) { return e.category !== 'bicycles';
     });
     $('#accessoryResults').html(View.accessoryIndexHTML({accessories: accessories}));
   });
 
-  $('.show').on('click', function() {
+  function classShowClickHandler2(event) {
+    console.log('show cliked, data is:  ' + data.products);
     var products = data.products;
-    debugger;
-    var product = $.grep(products, function(e) { return e.id === id;
+    console.log(data.products);
+
+    var id = $(event.target).data('id');
+
+    var product = $.grep(products, function(e) {
+      return e.id === id;
     });
-    $('#productResults').html(View.productIndexHTML({product: product}));
-  });
+
+    $('#productResults').html(View.itemShowHTML({product: product}));
+  }
+
+  $('.show').on('click', classShowClickHandler2);
 
   //
   // $("#products").html(View.productIndexHTML({products: bikes}));
