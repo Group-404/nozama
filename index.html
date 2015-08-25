@@ -102,34 +102,8 @@
   * START: bicycles page
   ************************************************
    -->
-
-
-  <div id="bikepage">
-
-    <div class="pageheader">Bicycles</div>
-
-    <div class="bikepage">
-      <a href="#" class="show showlink">
-        <p class="biketitle">Breezer Downtown 5 Bike</p>
-        <p class="bikedescription">The Breezer Downtown 5 Bike is the ideal ride for your urban adventures around town, whether it be a long expedition or a simple ride to work.</p>
-        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/bike_breezer_sm.jpg" alt="" />
-      </a>
-      <p class="buttoncentered show">
-        <a class="btn btn-md btn-custom buttoncentered" href="#" role="button">Learn More</a>
-      </p>
-    </div>
-
-    <div class="bikepage">
-      <a href="#" class="show showlink">
-        <p class="biketitle">Schwinn City 3 Bike 2013 - Womens</p>
-        <p class="bikedescription">In a classic design with modern lightweight performance, the Schwinn City 3 Bike for women lets you get around town easily and look good doing it.</p>
-        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/bike_schwinn_sm.jpg" alt="" />
-      </a>
-      <p class="buttoncentered show">
-        <a class="btn btn-md btn-custom buttoncentered" href="#" role="button">Learn More</a>
-      </p>
-    </div>
-
+  <div id="bicyclePage">
+    <div id="bicycleResults"></div>
   </div>
 
   <!--
@@ -238,24 +212,8 @@
   ************************************************
    -->
 
-
-  <div id="showpage">
-
-    <div class="pageheader">Giro Reverb Helmet</div>
-
-    <div class="showpage">
-      <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/helmet_shadow_lg.jpg" alt="" />
-      <p class="textcentered">Price: $55.00</p>
-      <div id="sizeRadios">
-        <input type="radio" name="size" value="s">Small (20-22" head)
-        <input type="radio" name="size" value="m">Medium (22-23" head)
-        <input type="radio" name="size" value="l">Large (23-25" head)
-      </div>
-      <p class="buttoncentered blankline">
-        <a class="btn btn-md btn-custom buttoncentered cart" href="#" role="button">Add to Cart</a>
-      </p>
-    </div>
-
+  <div id="showPage">
+    <div id="productResults"></div>
   </div>
 
   <!--
@@ -391,6 +349,72 @@
 
   <!--
   ************************************************
+  * START: handlebar templates
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * START: bicycle template
+  ************************************************
+   -->
+
+  <script id="bicycle-template" type="text/x-handlebars-template">
+    <div id="bikepage">
+      <div class="pageheader">Bicycles</div>
+      {{#each bicycles}}
+        <div class="bikepage">
+          <a href="#" class="show showlink">
+            <p class="biketitle">{{name}}</p>
+            <p class="bikedescription">{{description}}</p>
+            <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/{{thumbnailURL}}" alt="" />
+          </a>
+          <p class="buttoncentered show">
+            <a class="btn btn-md btn-custom buttoncentered" data-id={{id}} href="#" role="button">Learn More</a>
+          </p>
+        </div>
+      {{/each}}
+    </div>
+  </script>
+
+  <!--
+  ************************************************
+  * END: bicycle template
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * START: show template
+  ************************************************
+   -->
+
+<!--   <script id="show-template" type="text/x-handlebars-template">
+    <div class="pageheader">{{name}}</div>
+
+    <div class="showpage">
+      <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/{{imageURL}}" alt="" />
+      <p class="textcentered">Price: ${{price}}</p>
+      <p class="buttoncentered blankline">
+        <a class="btn btn-md btn-custom buttoncentered cart" href="#" role="button">Add to Cart</a>
+      </p>
+    </div>
+  </script> -->
+
+  <!--
+  ************************************************
+  * END: show template
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * END: handlebar templates
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
   * START: scripts
   ************************************************
    -->
@@ -409,12 +433,18 @@
   ************************************************
    -->
 
-<button id="show-bikes" class="btn btn-default">Show Bicycles</button>
+  <!--
+  ************************************************
+  * END: handlebar templates
+  ************************************************
+   -->
+
+<!-- Handlebars list of items -->
+<!--   <button id="show-bikes" class="btn btn-default">Show Bicycles</button>
 <button id="show-accessories" class="btn btn-default">Show Accessories</button>
 <div id="products"></div>
 
-<!-- Handlebars list of items -->
-<!--   <script id="product-template" type="text/x-handlebars-template">
+<script id="product-template" type="text/x-handlebars-template">
     {{#each products}}
       <h3>{{name}}</h3>
       {{#if sale}}
