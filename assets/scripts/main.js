@@ -15,7 +15,10 @@ $(document).ready(function(){
 
   // when click button show-bikes, show only bikes
   $("#show-bikes").on('click', function(){
+    var bikes = [];
+    // iterate thru data.products and put all bikes into array
 
+  $("#products").html(View.productIndexHTML({products: bikes}));
   });
 
   // when click button accessories, show only accessories
