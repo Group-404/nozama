@@ -129,6 +129,21 @@ $(document).ready(function() {
     $('#bicycleResults').html(View.bicycleIndexHTML({bicycles: bicycles}));
   });
 
+  $('.accessories').on('click', function() {
+    var products = data.products;
+    var accessories = $.grep(products, function(e) { return e.category !== 'bicycles';
+    });
+    $('#accessoryResults').html(View.accessoryIndexHTML({accessories: accessories}));
+  });
+
+  $('.show').on('click', function() {
+    var products = data.products;
+    debugger;
+    var product = $.grep(products, function(e) { return e.id === id;
+    });
+    $('#productResults').html(View.productIndexHTML({product: product}));
+  });
+
   //
   // $("#products").html(View.productIndexHTML({products: bikes}));
   // });
