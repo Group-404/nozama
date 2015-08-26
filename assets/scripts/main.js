@@ -1,17 +1,21 @@
 'use strict';
+
+var server = '//localhost:3000';
+// var server = '[production server name goes here]';
+
 // Fake database. Delete when we connect to back-end.
-var data = { products: [
-  {id: 1, category: 'bicycles', name: 'Breezer Downtown 5 Bike', description: 'The Breezer Downtown 5 Bike is the ideal ride for your urban adventures around town, whether it be a long expedition or a simple ride to work.', price: 569, imageURL: 'bike_breezer_lg.jpg', thumbnailURL: 'bike_breezer_sm.jpg'},
-  {id: 2, category: 'bicycles', name: 'Schwinn City 3 Bike 2013 - Womens', description: 'In a classic design with modern lightweight performance, the Schwinn City 3 Bike for women lets you get around town easily and look good doing it.', price: 550, sale: 269.95, imageURL: 'bike_schwinn_lg.jpg', thumbnailURL: 'bike_schwinn_sm.jpg'},
-  {id: 3, category: 'helmets', name: 'Giro Reverb Helmet', model: 'matte gray', price: 55, imageURL: 'helmet_shadow_lg.jpg', thumbnailURL: 'helmet_shadow_sm.jpg'},
-  {id: 4, category: 'helmets', name: 'Giro Reverb Helmet', model: 'Highlight Yellow', price: 55, imageURL: 'helmet_yellow_lg.jpg', thumbnailURL: 'helmet_yellow_sm.jpg'},
-  {id: 5, category: 'helmets', name: 'Giro Reverb Helmet', model: 'Matte White CA Beary', price: 55, imageURL: 'helmet_white_lg.jpg', thumbnailURL: 'helmet_white_sm.jpg'},
-  {id: 6, category: 'helmets', name: 'Giro Reverb Helmet', model: 'Vintage Red', price: 55, imageURL: 'helmet_red_lg.jpg', thumbnailURL: 'helmet_red_sm.jpg'},
-  {id: 7, category: 'locks', name: 'Kryptonite Keeper 12 Standard',  price: 35, sale: 30, imageURL: 'lock_keeper_lg.jpg', thumbnailURL: 'lock_keeper_sm.jpg'},
-  {id: 8, category: 'locks', name: 'Kryptonite Series 2 Mini Ulock - Red',  price: 35, imageURL: 'lock_red_lg.jpg', thumbnailURL: 'lock_red_sm.jpg'},
-  {id: 9, category: 'locks', name: 'Kryptonite Series 2 Mini Ulock - White',  price: 35, imageURL: 'lock_white_lg.jpg', thumbnailURL: 'lock_white_sm.jpg'},
-  {id: 10, category: 'locks', name: 'Kryptonite Series 2 Mini Ulock - Black',  price: 35, imageURL: 'lock_black_lg.jpg', thumbnailURL: 'lock_black_sm.jpg'},
-]};
+// var data = { products: [
+//   {id: 1, category: 'bicycles', name: 'Breezer Downtown 5 Bike', description: 'The Breezer Downtown 5 Bike is the ideal ride for your urban adventures around town, whether it be a long expedition or a simple ride to work.', price: 569, imageURL: 'bike_breezer_lg.jpg', thumbnailURL: 'bike_breezer_sm.jpg'},
+//   {id: 2, category: 'bicycles', name: 'Schwinn City 3 Bike 2013 - Womens', description: 'In a classic design with modern lightweight performance, the Schwinn City 3 Bike for women lets you get around town easily and look good doing it.', price: 550, sale: 269.95, imageURL: 'bike_schwinn_lg.jpg', thumbnailURL: 'bike_schwinn_sm.jpg'},
+//   {id: 3, category: 'helmets', name: 'Giro Reverb Helmet', model: 'matte gray', price: 55, imageURL: 'helmet_shadow_lg.jpg', thumbnailURL: 'helmet_shadow_sm.jpg'},
+//   {id: 4, category: 'helmets', name: 'Giro Reverb Helmet', model: 'Highlight Yellow', price: 55, imageURL: 'helmet_yellow_lg.jpg', thumbnailURL: 'helmet_yellow_sm.jpg'},
+//   {id: 5, category: 'helmets', name: 'Giro Reverb Helmet', model: 'Matte White CA Beary', price: 55, imageURL: 'helmet_white_lg.jpg', thumbnailURL: 'helmet_white_sm.jpg'},
+//   {id: 6, category: 'helmets', name: 'Giro Reverb Helmet', model: 'Vintage Red', price: 55, imageURL: 'helmet_red_lg.jpg', thumbnailURL: 'helmet_red_sm.jpg'},
+//   {id: 7, category: 'locks', name: 'Kryptonite Keeper 12 Standard',  price: 35, sale: 30, imageURL: 'lock_keeper_lg.jpg', thumbnailURL: 'lock_keeper_sm.jpg'},
+//   {id: 8, category: 'locks', name: 'Kryptonite Series 2 Mini Ulock - Red',  price: 35, imageURL: 'lock_red_lg.jpg', thumbnailURL: 'lock_red_sm.jpg'},
+//   {id: 9, category: 'locks', name: 'Kryptonite Series 2 Mini Ulock - White',  price: 35, imageURL: 'lock_white_lg.jpg', thumbnailURL: 'lock_white_sm.jpg'},
+//   {id: 10, category: 'locks', name: 'Kryptonite Series 2 Mini Ulock - Black',  price: 35, imageURL: 'lock_black_lg.jpg', thumbnailURL: 'lock_black_sm.jpg'},
+// ]};
 
 var server = '//localhost:3000';
 // var server = '[place production server here]';
@@ -21,6 +25,8 @@ var server = '//localhost:3000';
 //////////////////////////////////////////////
 
 $(document).ready(function() {
+
+  window.Main = window.Main || {};
 
   // invokes carousel
   $('#carousel').carousel();
@@ -83,6 +89,8 @@ $(document).ready(function() {
     $('#cartpage').hide();
   }
 
+  window.Main.classShowClickHandler1 = classShowClickHandler1;
+
   $('.show').on('click', classShowClickHandler1);
 
   $('.register').on('click', function(event) {
@@ -127,13 +135,7 @@ $(document).ready(function() {
   //////////////////////////////////////////////
 
   $('.bicycles').on('click', function() {
-    console.log('Bike Clicked')
-    var products = data.products;
-    var bicycles = $.grep(products, function(e) { return e.category === 'bicycles';
-    });
-    $('#bicycleResults').html(View.bicycleIndexHTML({bicycles: bicycles}));
-    $('.show').on('click', classShowClickHandler1);
-    $('.show').on('click', classShowClickHandler2);
+    get_bicycles();
   });
 
   $('.accessories').on('click', function() {
@@ -157,6 +159,8 @@ $(document).ready(function() {
 
     $('#productResults').html(View.itemShowHTML({product: product}));
   }
+
+  window.Main.classShowClickHandler2 = classShowClickHandler2;
 
   $('.show').on('click', classShowClickHandler2);
 
