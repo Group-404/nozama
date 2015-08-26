@@ -173,16 +173,16 @@ $(document).ready(function() {
   //////////////////////////////////////////////
 
 
-  // Log in
-
-  $('#login-submit').on('click', function(){
+  // LOG IN:
+  $('#login-submit').on('click', function(e){
+    e.preventDefault();
     $.ajax(server + '/login', {
       contentType: 'application/json',
       processData: false,
       data: JSON.stringify({
-          email: $('#emailLogin').val(),
-          password: $('#passwordLogin').val(),
-        }),
+        email: $('#emailLogin').val(),
+        password: $('#passwordLogin').val()
+      }),
       dataType: 'json',
       method: 'POST'
     }).done(function(data, textStatus, jqxhr){
@@ -190,7 +190,28 @@ $(document).ready(function() {
       // simplestorage
     }).fail(function(jqxhr, textStatus, errorThrown){
       // $('#login-alert').removeClass('hide');
-      console.log(jqxhr);
+      console.log(jqxhr.responseText);
+    });
+  });
+
+  // SIGN UP:
+  $('#registration-submit').on('click', function(e) {
+    e.preventDefault();
+    $.ajax(server + '/signup', {
+      contentType: 'application/json',
+      processData: false,
+      data: JSON.stringify({
+        email: $('#emailRegister').val(),
+        password: $('#passwordRegister').val()
+      }),
+      dataType: 'json',
+      method: 'POST'
+    }).done(function(data, textStatus, jqxhr){
+      // $('#result').val(JSON.stringify(data));
+      console.log(data);
+    }).fail(function(jqxhr, textStatus, errorThrown){
+      // $('#result').val('registration failed');
+      console.log(jqxhr.responseText);
     });
   });
 
