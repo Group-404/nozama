@@ -26,4 +26,19 @@ $(document).ready(function(){
 
   });
 
+  $('#create-charge').on('click', function(e) {
+    // Open Checkout with further options
+    Stripe.handler.open({
+      name: 'Demo Site',
+      description: '2 widgets',
+      amount: 2000
+    });
+    e.preventDefault();
+  });
+
+  // Close Checkout on page navigation
+  $(window).on('popstate', function() {
+    Stripe.handler.close();
+  });
+
 });
