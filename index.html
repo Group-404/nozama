@@ -29,6 +29,21 @@
     {{/each}}
   </script>
 
+<!-- Stripe checkout form -->
+<!-- Remember to replace the test data-key with your live key in production -->
+<!-- Add logo to data-image -->
+  <form action="" method="POST">
+    <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+      data-amount="2000"
+      data-name="Nozama"
+      data-description="2 widgets ($20.00)"
+      data-image="http://nozama.s3-us-west-2.amazonaws.com/penny-farthing.png"
+      data-locale="auto">
+    </script>
+  </form>
+
 <script src="node_modules/jquery/dist/jquery.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="node_modules/handlebars/dist/handlebars.js"></script>
