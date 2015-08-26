@@ -172,6 +172,28 @@ $(document).ready(function() {
   // END: prepare all handlebars objects
   //////////////////////////////////////////////
 
+
+  // Log in
+
+  $('#login-submit').on('click', function(){
+    $.ajax(server + '/login', {
+      contentType: 'application/json',
+      processData: false,
+      data: JSON.stringify({
+          email: $('#emailLogin').val(),
+          password: $('#passwordLogin').val(),
+        }),
+      dataType: 'json',
+      method: 'POST'
+    }).done(function(data, textStatus, jqxhr){
+      console.log(data);
+      // simplestorage
+    }).fail(function(jqxhr, textStatus, errorThrown){
+      // $('#login-alert').removeClass('hide');
+      console.log(jqxhr);
+    });
+  });
+
 });
 
 //////////////////////////////////////////////
