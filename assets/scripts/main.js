@@ -26,19 +26,34 @@ $(document).ready(function(){
 
   });
 
-  $('#create-charge').on('click', function(e) {
-    // Open Checkout with further options
-    Stripe.handler.open({
-      name: 'Demo Site',
-      description: '2 widgets',
-      amount: 2000
-    });
-    e.preventDefault();
-  });
+  // Stripe Checkout
+  // $('#create-charge').on('click', function(e) {
+  //   // Open Checkout with further options
+  //   Stripe.handler.open({
+  //     name: 'Nozama',
+  //     description: 'bike (1), helmet (1)', // get from cart
+  //     amount: 2000 // get from cart
+  //   });
+  //   e.preventDefault();
+  // });
 
-  // Close Checkout on page navigation
-  $(window).on('popstate', function() {
-    Stripe.handler.close();
+  // // Close Checkout on page navigation
+  // $(window).on('popstate', function() {
+  //   Stripe.handler.close();
+  // });
+
+  Stripe.setPublishableKey('pk_test_2saYaU7cKBb0eV7JGudVl4Jo');
+  $('#payment-form').submit(function(event) {
+    var $form = $(this);
+
+    // Disable the submit button to prevent repeated clicks
+    $form.find('button').prop('disabled', true);
+
+    Stripe.card.createToken($form, Payment.responseHandler);
+    console.log("token created successfully");
+
+    // Prevent the form from submitting with the default action
+    return false;
   });
 
 });
