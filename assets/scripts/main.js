@@ -73,7 +73,24 @@ $(document).ready(function() {
   });
 
   $('.cart').on('click', function(event) {
+    var id = $(event.target).data('id');
+    console.log();
     showPage.cartPage();
+    $.ajax({
+      url: server + '/products/' + id,
+      type: 'GET',
+      dataType: 'json',
+    })
+    .done(function() {
+      console.log("success");
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+
   });
 
 
@@ -86,31 +103,62 @@ $(document).ready(function() {
   });
 
   /// CART
-  var cartValue = [];
+  var cartValue = {};
   var listSimpleStorage = simpleStorage.index();
   // simpleStorage.set("cart", cartValue);
   function classShowClickHandler2(event) {
-   var id = $(event.target).data('id');
-     $.ajax({
-       url: server + '/products/' + id,
-       type: 'GET',
-       dataType: 'json'
-     })
-     .done(function(product) {
-      cartValue.push({quanity:1 , item:product.id});
-       $('#content').html(View.itemShowHTML({product: product}));
-       simpleStorage.set('cart', cartValue);
-       console.log("product id is:" + product.id);
-       console.log(listSimpleStorage);
+    var id = $(event.target).data('id');
+    $.ajax({
+     url: server + '/products/' + id,
+     type: 'GET',
+     dataType: 'json'
+    })
+    .done(function(product) {
+      $('#productResults').html(View.itemShowHTML({product: product}));
 
-     })
-     .fail(function() {
-       console.log("error");
-     })
-     .always(function() {
-       console.log("complete");
-     });
-  };
+      console.log("product id is:" + product.id);
+      console.log(listSimpleStorage);
+
+      $('#productResults .cart').on('click', function(event){
+        event.preventDefault();
+        var qty = parseInt($('#productResults #quantity').val(), 10);
+        var cart = simpleStorage.get('cart') || {};
+        if(Number.isNaN(qty)) {
+          qty = 0;
+        }
+        if(cart[id]) {
+          cart[id].quantity += qty;
+        } else {
+          cart[id] = {
+            quantity : qty
+          };
+        }
+        simpleStorage.set('cart', cart);
+      });
+      $.ajax({
+        url: '/path/to/file',
+        type: 'default GET (Other values: POST)',
+        dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+        data: {param1: 'value1'},
+      })
+      .done(function() {
+        console.log("success");
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+  }
 
 
   // WAT

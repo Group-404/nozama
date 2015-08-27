@@ -50,7 +50,6 @@
   * START: home page
   ************************************************
    -->
-  <div id="content">
   <div id="carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -92,7 +91,6 @@
     <a href="#carousel" class="right carousel-control" data-slide="next">
       <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
-  </div>
   </div>
 
   <!--
@@ -413,13 +411,16 @@
    -->
 
   <script id="show-template" type="text/x-handlebars-template">
-    <div class="pageheader">{{name}}</div>
+    <div class="pageheader">{{product.name}}</div>
 
     <div class="showpage">
-      <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/{{imageURL}}" alt="" />
-      <p class="textcentered">Price: ${{price}}</p>
+      <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/{{product.imageURL}}" alt="" />
+      <p class="textcentered">Price: ${{product.price}} </p>
+
+
       <p class="buttoncentered blankline">
-        <a class="btn btn-md btn-custom buttoncentered cart" href="#" role="button">Add to Cart</a>
+        <a class="btn btn-md btn-custom buttoncentered cart" href="#" role="button" data-id='{{product.id}}'>Add to Cart</a>
+        <input id="quantity" placeholder="Quantity">
       </p>
     </div>
   </script>
@@ -526,7 +527,7 @@
   <script src="node_modules/jquery/dist/jquery.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
   <script src="node_modules/handlebars/dist/handlebars.js"></script>
-  <script src="node_modules/simplestorage.js/simpleStorage.js"></script>
+  <script src="/node_modules/simplestorage.js/simpleStorage.js"></script>
   <script src="assets/scripts/catalog.js" type="text/javascript"></script>
   <script src="assets/scripts/orders.js" type="text/javascript"></script>
   <script src="assets/scripts/view.js" type="text/javascript"></script>
