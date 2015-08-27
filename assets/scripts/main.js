@@ -1,47 +1,165 @@
 'use strict';
 
-// fake database. delete when connect to back-end.
-var data = { products: [
-  {id: 1, name: "specialized roadbike", category: "bike", price: 400},
-  {id: 2, name: "schwinn mountainbike", category: "bike", price: 550, sale: 499},
-  {id: 3, name: "schwinn helmet", category: "accessory", price: 30},
-  {id: 4, name: "bike gloves", category: "accessory", price: 25, sale: 19}
-]};
+var server = '//localhost:3000';
+// var server = '[production server name goes here]';
 
-$(document).ready(function(){
+//////////////////////////////////////////////
+// BEGIN: document.ready
+//////////////////////////////////////////////
 
-  // on document ready, show all products
-  $("#products").html(View.productIndexHTML({products: data.products}));
+$(document).ready(function() {
 
-  // when click button show-bikes, show only bikes
-  $("#show-bikes").on('click', function(){
-    var bikes = [];
-    // iterate thru data.products and put all bikes into array
+  // WAT
+  window.Main = window.Main || {};
 
-  $("#products").html(View.productIndexHTML({products: bikes}));
+  // invokes carousel
+  $('#carousel').carousel();
+
+  // initial state of landing page
+  $('#carousel').show();
+  $('#bikepage').hide();
+  $('#accessoriespage').hide();
+  $('#showpage').hide();
+  $('#registerpage').hide();
+  $('#loginpage').hide();
+
+  //////////////////////////////////////////////
+  // BEGIN: show appropriate page; hide the rest
+  //////////////////////////////////////////////
+
+  $('#logo').on('click', function(event) {
+    event.preventDefault();
+    $('#carousel').show();
+    $('#bikepage').hide();
+    $('#accessoriespage').hide();
+    $('#showpage').hide();
+    $('#registerpage').hide();
+    $('#loginpage').hide();
+    $('#cartpage').hide();
   });
 
-  // when click button accessories, show only accessories
-  $("#show-accessories").on('click', function(){
+  $('.bicycles').on('click', function(event) {
+    event.preventDefault();
+    $('#bikepage').show();
+    $('#carousel').hide();
+    $('#accessoriespage').hide();
+    $('#showpage').hide();
+    $('#registerpage').hide();
+    $('#loginpage').hide();
+    $('#cartpage').hide();
 
   });
 
-  // Stripe Checkout
-  // $('#create-charge').on('click', function(e) {
-  //   // Open Checkout with further options
-  //   Stripe.handler.open({
-  //     name: 'Nozama',
-  //     description: 'bike (1), helmet (1)', // get from cart
-  //     amount: 2000 // get from cart
-  //   });
-  //   e.preventDefault();
+  $('.accessories').on('click', function(event) {
+    event.preventDefault();
+    $('#accessoriespage').show();
+    $('#carousel').hide();
+    $('#bikepage').hide();
+    $('#showpage').hide();
+    $('#registerpage').hide();
+    $('#loginpage').hide();
+    $('#cartpage').hide();
+  });
+
+  function classShowClickHandler1(event) {
+    console.log("show click");
+    event.preventDefault();
+    $('#showpage').show();
+    $('#carousel').hide();
+    $('#bikepage').hide();
+    $('#accessoriespage').hide();
+    $('#registerpage').hide();
+    $('#loginpage').hide();
+    $('#cartpage').hide();
+  }
+
+  // WAT
+  window.Main.classShowClickHandler1 = classShowClickHandler1;
+
+  $('.show').on('click', classShowClickHandler1);
+
+  $('.register').on('click', function(event) {
+    event.preventDefault();
+    $('#registerpage').show();
+    $('#carousel').hide();
+    $('#bikepage').hide();
+    $('#accessoriespage').hide();
+    $('#showpage').hide();
+    $('#loginpage').hide();
+    $('#cartpage').hide();
+  });
+
+  $('.login').on('click', function(event) {
+    event.preventDefault();
+    $('#loginpage').show();
+    $('#carousel').hide();
+    $('#bikepage').hide();
+    $('#accessoriespage').hide();
+    $('#showpage').hide();
+    $('#registerpage').hide();
+    $('#cartpage').hide();
+  });
+
+  $('.cart').on('click', function(event) {
+    event.preventDefault();
+    $('#cartpage').show();
+    $('#carousel').hide();
+    $('#bikepage').hide();
+    $('#accessoriespage').hide();
+    $('#showpage').hide();
+    $('#registerpage').hide();
+    $('#loginpage').hide();
+  });
+
+  //////////////////////////////////////////////
+  // END: show appropriate page, hide the rest
+  //////////////////////////////////////////////
+
+  //////////////////////////////////////////////
+  // BEGIN: prepare all handlebars objects
+  //////////////////////////////////////////////
+
+  $('.bicycles').on('click', function() {
+    get_bicycles();
+  });
+
+  $('.accessories').on('click', function() {
+    console.log ('accessories button');
+    var products = data.products;
+    var accessories = $.grep(products, function(e) { return e.category !== 'bicycles';
+    });
+    $('#accessoryResults').html(View.accessoryIndexHTML({accessories: accessories}));
+  });
+
+  // WAT
+  function classShowClickHandler2(event) {
+    console.log('show cliked, data is:  ' + data.products);
+    var products = data.products;
+    console.log(data.products);
+
+    var id = $(event.target).data('id');
+
+    var product = $.grep(products, function(e) {
+      return e.id === id;
+    });
+
+    $('#productResults').html(View.itemShowHTML({product: product}));
+  }
+
+  // WAT
+  window.Main.classShowClickHandler2 = classShowClickHandler2;
+
+  $('.show').on('click', classShowClickHandler2);
+
+  //
+  // $("#products").html(View.productIndexHTML({products: bikes}));
   // });
 
-  // // Close Checkout on page navigation
-  // $(window).on('popstate', function() {
-  //   Stripe.handler.close();
-  // });
+  //////////////////////////////////////////////
+  // END: prepare all handlebars objects
+  //////////////////////////////////////////////
 
+  // CHECKOUT & PAYMENT
   $('#cart-result').html('lets pretend this came from the cart');
 
   Stripe.setPublishableKey('pk_test_2saYaU7cKBb0eV7JGudVl4Jo');
@@ -59,3 +177,7 @@ $(document).ready(function(){
   });
 
 });
+
+//////////////////////////////////////////////
+// END: document.ready
+//////////////////////////////////////////////

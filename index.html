@@ -3,31 +3,360 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Nozama</title>
+  <title>nozama</title>
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:400,300,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="assets/styles/carousel.css">
 </head>
 <body>
 
-<button id="show-bikes" class="btn btn-default">Show Bicycles</button>
-<button id="show-accessories" class="btn btn-default">Show Accessories</button>
-<div id="products"></div>
+  <!--
+  ************************************************
+  * START: header
+  ************************************************
+   -->
 
-<!-- Handlebars list of items -->
-  <script id="product-template" type="text/x-handlebars-template">
-    {{#each products}}
-      <h3>{{name}}</h3>
-      {{#if sale}}
-      <p class="strike-thru">{{price}}</p>
-      <p>SALE PRICE: {{sale}}</p>
-      {{else}}
-      <p>{{price}}</p>
-      {{/if}}
-        <button class="btn btn-default view-item" data-id={{id}}>View item</button>
-        <button class="btn btn-default add-to-cart" data-id={{id}}>Add to cart</button>
-    {{/each}}
+  <header>
+    <div id="logo">
+      <a href="#">
+        <img src="http://nozama.s3-us-west-2.amazonaws.com/penny-farthing.png" alt="">
+      </a>
+    </div>
+    <div id="sitename">
+      NOZAMA
+    </div>
+    <div id="headerbuttons">
+      <div class="btn-group nav bicycles"><a class="navlink" href="#">Bicycles</a></div>
+      <div class="btn-group nav accessories"><a class="navlink" href="#">Accessories</a></div>
+      <div class="btn-group nav register"><a class="navlink" href="#">Register</a></div>
+      <div class="btn-group nav login"><a class="navlink" href="#">Login</a></div>
+      <div class="btn-group headercart cart" role="group" aria-label="cart"><a href="#"><img src="http://nozama.s3-us-west-2.amazonaws.com/cart.png" alt=""></a></div>
+    </div>
+  </header>
+
+  <!--
+  ************************************************
+  * END: header
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * START: home page
+  ************************************************
+   -->
+
+  <div id="carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carousel" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel" data-slide-to="1"></li>
+      <li data-target="#carousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="http://nozama.s3-us-west-2.amazonaws.com/bike1.jpg" alt="Slide 1" />
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Seek adventure, but stay safe.</h1>
+            <p><a class="btn btn-lg btn-custom accessories" href="#" role="button">Buy a Helmet</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <img src="http://nozama.s3-us-west-2.amazonaws.com/bike2.jpg" alt="Slide 2" />
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Explore exotic lands with new friends.</h1>
+            <p><a class="btn btn-lg btn-custom bicycles" href="#" role="button">Buy a Bike</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <img src="http://nozama.s3-us-west-2.amazonaws.com/bike3.jpg" alt="Slide 3" />
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Experience the ride of your life.</h1>
+            <p><a class="btn btn-lg btn-custom accessories" href="#" role="button">Buy an Accessory</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#carousel" class="left carousel-control" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a href="#carousel" class="right carousel-control" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </div>
+
+  <!--
+  ************************************************
+  * END: home page
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * START: bicycles page
+  ************************************************
+   -->
+  <div id="bicyclePage">
+    <div id="bicycleResults"></div>
+  </div>
+
+  <!--
+  ************************************************
+  * END: bicycles page
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * START: accessories page
+  ************************************************
+   -->
+
+  <div id="accessoryPage">
+    <div id="accessoryResults"></div>
+  </div>
+
+  <!--
+  ************************************************
+  * END: accessories page
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * START: show page
+  ************************************************
+   -->
+
+  <div id="showPage">
+    <div id="productResults"></div>
+  </div>
+
+  <!--
+  ************************************************
+  * END: show page
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * START: register page
+  ************************************************
+   -->
+
+  <div id="registerpage">
+    <div>
+      <div class="pageheader">Register</div>
+      <p class="marginRegisterLogin">Please fill out the form below to register:</p>
+      <label for="emailRegister">Email:</label>
+      <input type="text" name="emailRegister" id="emailRegister">
+      <label for="passwordRegister">Password:</label>
+      <input type="password" name="passwordRegister" id="passwordRegister">
+      <label for="passwordConfirmationRegister">Password Confirmation:</label>
+      <input type="password" name="passwordConfirmationRegister" id="passwordConfirmationRegister">
+      <a id="registration-submit" class="btn btn-md btn-custom marginRegisterLogin" href="#" role="button">Submit</a>
+    </div>
+  </div>
+
+  <!--
+  ************************************************
+  * END: register page
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * START: login page
+  ************************************************
+   -->
+
+  <div id="loginpage">
+    <div>
+      <div class="pageheader">Login</div>
+      <p class="marginRegisterLogin">Please log in:</p>
+      <label for="emailLogin">Email:</label>
+      <input type="text" name="emailLogin" id="emailLogin">
+      <label for="passwordLogin">Password:</label>
+      <input type="password" name="passwordLogin" id="passwordLogin">
+      <a id="login-submit" class="btn btn-md btn-custom marginRegisterLogin" href="#" role="button">Submit</a>
+    </div>
+  </div>
+
+  <!--
+  ************************************************
+  * END: login page
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * START: cart page
+  ************************************************
+   -->
+
+  <div id="cartpage">
+    <div>
+      <div class="pageheader">Shopping Cart</div>
+      <p class="marginAddCart">Shipping Address:</p>
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name">
+      <label for="address">Address:</label>
+      <input type="text" name="address1" id="address1">
+      <label for="city">City:</label>
+      <input type="text" name="city" id="city">
+      <label for="state">State/Province:</label>
+      <input type="text" name="state" id="state">
+      <label for="zip">Zip/Postal Code:</label>
+      <input type="text" name="zip" id="zip">
+      <p class="marginAddCart">Payment Method:</p>
+      <label for="creditcard">Credit Card:</label>
+      <input type="text" name="creditcard" id="creditcard">
+      <label for="expdate">Expiration Date:</label>
+      <select name="CCExpiresMonth">
+        <option value="" selected>--Month--
+        <option value="01">January
+        <option value="02">February
+        <option value="03">March
+        <option value="04">April
+        <option value="05">May
+        <option value="06">June
+        <option value="07">July
+        <option value="08">August
+        <option value="09">September
+        <option value="10">October
+        <option value="11">November
+        <option value="12">December
+      </select>
+      <select name="CCExpiresYear">
+      <option value="" selected>--Year--
+        <option value="15">2015
+        <option value="16">2016
+        <option value="17">2017
+        <option value="18">2018
+        <option value="19">2019
+        <option value="20">2020
+      </select>
+
+      <label for="securitycode">Security Code:</label>
+      <input type="text" name="securitycode" id="securitycode">
+      <a id="login-submit" class="btn btn-md btn-custom marginRegisterLogin" href="#" role="button">Submit</a>
+    </div>
+  </div>
+
+  <!--
+  ************************************************
+  * END: cart page
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * START: footer
+  ************************************************
+   -->
+
+  <footer>&copy; 2015 NOZAMA Enterprises, LLC &mdash; All Rights Reserved</footer>
+
+  <!--
+  ************************************************
+  * END: footer
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * START: handlebar templates
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * START: bicycle template
+  ************************************************
+   -->
+
+  <script id="bicycle-template" type="text/x-handlebars-template">
+    <div id="accessorypage">
+      <div class="pageheader">Bicycles</div>
+      {{#each bicycles}}
+        <div class="bikepage">
+          <a href="#" class="show showlink">
+            <p class="biketitle">{{name}}</p>
+            <p class="bikedescription">{{description}}</p>
+            <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/{{thumbnailURL}}" alt="" />
+          </a>
+
+          <p class="buttoncentered">
+            <a class="btn btn-md btn-custom buttoncentered show" data-id={{id}} href="#" role="button">Learn More</a>
+          </p>
+        </div>
+      {{/each}}
+    </div>
   </script>
+
+  <!--
+  ************************************************
+  * END: bicycle template
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * START: accessory template
+  ************************************************
+   -->
+
+  <script id="accessory-template" type="text/x-handlebars-template">
+    <div id="accessoriespage">
+      <div class="pageheader">Accessories</div>
+      <div class="accessoriesheader">Helmets</div>
+      <hr>
+
+    </div>
+  </script>
+
+  <!--
+  ************************************************
+  * END: accessory template
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * START: show template
+  ************************************************
+   -->
+
+  <script id="show-template" type="text/x-handlebars-template">
+    <div class="pageheader">{{name}}</div>
+
+    <div class="showpage">
+      <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/{{imageURL}}" alt="" />
+      <p class="textcentered">Price: ${{price}}</p>
+      <p class="buttoncentered blankline">
+        <a class="btn btn-md btn-custom buttoncentered cart" href="#" role="button">Add to Cart</a>
+      </p>
+    </div>
+  </script>
+
+  <!--
+  ************************************************
+  * END: show template
+  ************************************************
+   -->
+
+  <!--
+  ************************************************
+  * END: handlebar templates
+  ************************************************
+   -->
+
 
 <!-- Stripe checkout form -->
 <form action="http://localhost:3000/payment" method="POST" id="payment-form">
@@ -72,6 +401,7 @@
 <script src="assets/scripts/payment.js" type="text/javascript"></script>
 <script src="assets/scripts/ajax.js" type="text/javascript"></script>
 <script src="assets/scripts/main.js" type="text/javascript"></script>
+
 
 </body>
 </html>
