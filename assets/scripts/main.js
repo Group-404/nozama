@@ -16,50 +16,23 @@ $(document).ready(function() {
   $('#carousel').carousel();
 
   // initial state of landing page
-  $('#carousel').show();
-  $('#bikepage').hide();
-  $('#accessoriespage').hide();
-  $('#showpage').hide();
-  $('#registerpage').hide();
-  $('#loginpage').hide();
+  showPage.landingPage();
 
   //////////////////////////////////////////////
   // BEGIN: show appropriate page; hide the rest
   //////////////////////////////////////////////
 
   $('#logo').on('click', function(event) {
-    event.preventDefault();
-    $('#carousel').show();
-    $('#bikepage').hide();
-    $('#accessoriespage').hide();
-    $('#showpage').hide();
-    $('#registerpage').hide();
-    $('#loginpage').hide();
-    $('#cartpage').hide();
+    showPage.landingPage();
   });
 
   $('.bicycles').on('click', function(event) {
-    event.preventDefault();
-    $('#bikepage').show();
-    $('#carousel').hide();
-    $('#accessoriespage').hide();
-    $('#showpage').hide();
-    $('#registerpage').hide();
-    $('#loginpage').hide();
-    $('#cartpage').hide();
-
+    showPage.bikePage();
   });
 
-  // $('.accessories').on('click', function(event) {
-  //   event.preventDefault();
-  //   $('#accessoriespage').show();
-  //   $('#carousel').hide();
-  //   $('#bikepage').hide();
-  //   $('#showpage').hide();
-  //   $('#registerpage').hide();
-  //   $('#loginpage').hide();
-  //   $('#cartpage').hide();
-  // });
+  $('.accessories').on('click', function(event) {
+    showPage.accessoriesPage();
+  });
 
   function classShowClickHandler1(event) {
     console.log("show click");
@@ -79,36 +52,15 @@ $(document).ready(function() {
   $('.show').on('click', classShowClickHandler1);
 
   $('.register').on('click', function(event) {
-    event.preventDefault();
-    $('#registerpage').show();
-    $('#carousel').hide();
-    $('#bikepage').hide();
-    $('#accessoriespage').hide();
-    $('#showpage').hide();
-    $('#loginpage').hide();
-    $('#cartpage').hide();
+    showPage.registerPage();
   });
 
   $('.login').on('click', function(event) {
-    event.preventDefault();
-    $('#loginpage').show();
-    $('#carousel').hide();
-    $('#bikepage').hide();
-    $('#accessoriespage').hide();
-    $('#showpage').hide();
-    $('#registerpage').hide();
-    $('#cartpage').hide();
+    showPage.loginPage();
   });
 
   $('.cart').on('click', function(event) {
-    event.preventDefault();
-    $('#cartpage').show();
-    $('#carousel').hide();
-    $('#bikepage').hide();
-    $('#accessoriespage').hide();
-    $('#showpage').hide();
-    $('#registerpage').hide();
-    $('#loginpage').hide();
+    showPage.cartPage();
   });
 
   //////////////////////////////////////////////
@@ -120,7 +72,7 @@ $(document).ready(function() {
   //////////////////////////////////////////////
 
   $('.bicycles').on('click', function() {
-    get_bicycles();
+    MyApi.getBicycles();
   });
 
   // $('.accessories').on('click', function() {
