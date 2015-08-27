@@ -440,26 +440,6 @@
   ************************************************
    -->
 
-  <!--
-  ************************************************
-  * START: scripts
-  ************************************************
-   -->
-
-  <script src="node_modules/jquery/dist/jquery.js"></script>
-  <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="node_modules/handlebars/dist/handlebars.js"></script>
-  <script src="assets/scripts/view.js" type="text/javascript"></script>
-  <script src="assets/scripts/main.js" type="text/javascript"></script>
-  <script src="assets/scripts/ajaxapicalls.js" type="text/javascript"></script>
-
-  <!--
-  ************************************************
-  * END: scripts
-  ************************************************
-   -->
-
-
   <!-- MY ACCOUNT -->
   <div id="account">
     <div class="pageheader">My Account</div>
@@ -543,7 +523,10 @@
 
       <a id="acct-save" class="btn btn-md btn-custom" href="#" role="button">Save Changes</a>
 
-      <a id="acct=delete" class="btn btn-md btn-custom" href="#" role="button">Delete Account</a>
+      <a id="acct-delete" class="btn btn-md btn-custom" href="#" role="button">Delete Account</a>
+
+      <a id="getOrders" class="btn btn-md btn-custom" href="#" role="button">Get Orders</a>
+
     <!-- </script> -->
     </div>
   </div>
@@ -573,6 +556,30 @@
         <button class="btn btn-default add-to-cart" data-id={{id}}>Add to cart</button>
     {{/each}}
   </script> -->
+
+
+  <!--
+  ************************************************
+  * START: scripts
+  ************************************************
+   -->
+
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.js"></script>
+  <script src="assets/scripts/catalog.js"></script>
+  <script src="assets/scripts/orders.js"></script>
+  <script src="assets/scripts/view.js" type="text/javascript"></script>
+  <script src="assets/scripts/main.js" type="text/javascript"></script>
+  <script src="assets/scripts/ajaxapicalls.js" type="text/javascript"></script>
+  <script src="assets/scripts/simpleStorage.js" type="text/javascript"></script>
+
+  <!--
+  ************************************************
+  * END: scripts
+  ************************************************
+   -->
+
 
 </body>
 </html>
