@@ -13,7 +13,7 @@ var Payment = (function(){
 
   var _responseHandler = function(status, response) {
     var $form = $('#payment-form');
-
+    debugger;
     if (response.error) {
       // Show the errors on the form
       $form.find('.payment-errors').text(response.error.message);
@@ -22,9 +22,10 @@ var Payment = (function(){
       // response contains id and card, which contains additional card details
       var token = response.id;
       // Insert the token into the form so it gets submitted to the server
-      $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+      // $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+      MyApi.createPayment(token);
       // and submit
-      $form.get(0).submit();
+      // $form.get(0).submit();
     }
   };
 
