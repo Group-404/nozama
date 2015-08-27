@@ -47,7 +47,7 @@
   * START: home page
   ************************************************
    -->
-
+  <div id="content">
   <div id="carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -89,6 +89,7 @@
     <a href="#carousel" class="right carousel-control" data-slide="next">
       <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
+  </div>
   </div>
 
   <!--
@@ -291,6 +292,7 @@
             <p class="bikedescription">{{description}}</p>
             <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/{{thumbnailURL}}" alt="" />
           </a>
+
           <p class="buttoncentered show">
             <a class="btn btn-md btn-custom buttoncentered" data-id={{id}} href="#" role="button">Learn More</a>
           </p>
@@ -440,6 +442,7 @@
   <script src="node_modules/jquery/dist/jquery.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
   <script src="node_modules/handlebars/dist/handlebars.js"></script>
+  <script src="/node_modules/simplestorage.js/simpleStorage.js"></script>
   <script src="assets/scripts/view.js" type="text/javascript"></script>
   <script src="assets/scripts/ajaxapicalls.js" type="text/javascript"></script>
   <script src="assets/scripts/showPage.js" type="text/javascript"></script>

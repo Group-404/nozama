@@ -19,7 +19,7 @@ $(document).ready(function() {
   showPage.landingPage();
 
   //////////////////////////////////////////////
-  // BEGIN: show appropriate page; hide the rest
+  // BEGIN: page load handlers
   //////////////////////////////////////////////
 
   $('#logo').on('click', function(event) {
@@ -64,45 +64,40 @@ $(document).ready(function() {
   });
 
   //////////////////////////////////////////////
-  // END: show appropriate page, hide the rest
-  //////////////////////////////////////////////
-
-  //////////////////////////////////////////////
-  // BEGIN: prepare all handlebars objects
+  // END: page load handlers
   //////////////////////////////////////////////
 
   $('.bicycles').on('click', function() {
     MyApi.getBicycles();
   });
 
-  // $('.accessories').on('click', function() {
-  //   console.log ('accessories button');
-  //   var products = data.products;
-  //   var accessories = $.grep(products, function(e) { return e.category !== 'bicycles';
-  //   });
-  //   $('#accessoryResults').html(View.accessoryIndexHTML({accessories: accessories}));
-  // });
-
-  // WAT
+  /// CART
+  var cartValue = [];
+  var listSimpleStorage = simpleStorage.index();
+  // simpleStorage.set("cart", cartValue);
   function classShowClickHandler2(event) {
-    var id = $(event.target).data('id');
-    $.ajax({
-     url: server + '/products/' + id,
-     type: 'GET',
-     dataType: 'json',
-    })
-    .done(function(product) {
-     $('#productResults').html(View.itemShowHTML({product: product}));
-     console.log(product);
-    })
-    .fail(function() {
-     console.log("error");
-    })
-    .always(function() {
-     console.log("complete");
-    });
-    $('#productResults').html(View.itemShowHTML({product: product}));
+   var id = $(event.target).data('id');
+     $.ajax({
+       url: server + '/products/' + id,
+       type: 'GET',
+       dataType: 'json'
+     })
+     .done(function(product) {
+      cartValue.push({quanity:1 , item:product.id});
+       $('#content').html(View.itemShowHTML({product: product}));
+       simpleStorage.set('cart', cartValue);
+       console.log("product id is:" + product.id);
+       console.log(listSimpleStorage);
+
+     })
+     .fail(function() {
+       console.log("error");
+     })
+     .always(function() {
+       console.log("complete");
+     });
   };
+
 
   // WAT
   window.Main.classShowClickHandler2 = classShowClickHandler2;
@@ -112,6 +107,15 @@ $(document).ready(function() {
   //
   // $("#products").html(View.productIndexHTML({products: bikes}));
   // });
+
+// $('.accessories').on('click', function() {
+  //   console.log ('accessories button');
+  //   var products = data.products;
+  //   var accessories = $.grep(products, function(e) { return e.category !== 'bicycles';
+  //   });
+  //   $('#accessoryResults').html(View.accessoryIndexHTML({accessories: accessories}));
+  // });
+
 
   //////////////////////////////////////////////
   // END: prepare all handlebars objects
