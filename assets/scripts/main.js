@@ -42,6 +42,8 @@ $(document).ready(function(){
   //   Stripe.handler.close();
   // });
 
+  $('#cart-result').html('lets pretend this came from the cart');
+
   Stripe.setPublishableKey('pk_test_2saYaU7cKBb0eV7JGudVl4Jo');
   $('#payment-form').submit(function(event) {
     var $form = $(this);
