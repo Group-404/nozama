@@ -13,7 +13,7 @@ var Payment = (function(){
 
   var _responseHandler = function(status, response) {
     var $form = $('#payment-form');
-    debugger;
+
     if (response.error) {
       // Show the errors on the form
       $form.find('.payment-errors').text(response.error.message);
