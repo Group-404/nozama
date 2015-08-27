@@ -146,6 +146,7 @@ $(document).ready(function() {
     $('#accessoryResults').html(View.accessoryIndexHTML({accessories: accessories}));
   });
   var cartValue = [];
+  var listSimpleStorage = simpleStorage.index();
   // simpleStorage.set("cart", cartValue);
   function classShowClickHandler2(event) {
    var id = $(event.target).data('id');
@@ -158,9 +159,8 @@ $(document).ready(function() {
       cartValue.push({quanity:1 , item:product.id});
        $('#content').html(View.itemShowHTML({product: product}));
        simpleStorage.set('cart', cartValue);
-       console.log(product);
-       list = simpleStorage.index();
-          console.log(list);
+       console.log("product id is:" + product.id);
+       console.log(listSimpleStorage);
 
      })
      .fail(function() {
