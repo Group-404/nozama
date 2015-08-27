@@ -64,13 +64,14 @@ var MyApi = (function(stripeToken){
     showProduct: function(){
 
     },
-    logout: function() {
+    logOut: function() {
       $.ajax(server + '/logout', {
         contentType: 'application/json',
         processData: false
       }).done(function(data, textStatus, jqxhr) {
-        $('.logout, .myaccount').hide(); // show logout button
-        $('.login, register').show(); // hide login button
+        $('.logout, .myaccount').hide();
+        $('.login, register').show();
+        showPage.landingPage();
         console.log(data);
       }).fail(function(jqxhr, textStatus, errorThrown) {
         console.error(jqxhr.responseText);
@@ -94,13 +95,6 @@ var MyApi = (function(stripeToken){
       });
     },
     saveAccountInfo: function() {
-          // var profile = {
-          //         moniker: $('#acct-moniker').val(),
-          //         location: $('#acct-location').val(),
-          //         email_or_phone: $("input[name='acct-phone-or-email']:checked").val(),
-          //         phone_number: $('#acct-phone-field').val(),
-          //         opted_in: findOptInSelection(),
-          //         };
       $.ajax({
         url: server + '/updateAccount',
         xhrFields: {
@@ -121,16 +115,28 @@ var MyApi = (function(stripeToken){
             city: $('#acct-city').val(),
             state: $('[name=acct-state]').val(),
             zipCode: $('#acct-zip').val(),
-          } //,
-          // profile: {
-
-          // }
+          }
         }),
 
       }).done(function(data) {
         console.log(data);
       }).fail(function(jqxhr, textStatus, errorThrown) {
         console.error(jqxhr.responseText);
+      });
+    },
+    deleteAccount: function() {
+      $.ajax({
+        url: server + '/deleteAccount',
+        method: 'DELETE',
+        xhrFields: {
+          withCredentials: true
+        },
+      }).done(function(data) {
+        console.log(data);
+        showPage.landingPage();
+        MyApi.logOut();
+      }).fail(function(data) {
+        console.error(data);
       });
     },
     getOrders: function() {

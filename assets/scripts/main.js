@@ -149,7 +149,7 @@ $(document).ready(function() {
 
   // LOG OUT:
   $('.logout').on('click', function() {
-    MyApi.logout();
+    MyApi.logOut();
   });
 
   // DISPLAY ACCOUNT INFORMATION:
@@ -165,6 +165,11 @@ $(document).ready(function() {
   // SAVE ACCOUNT INFORMATION:
   $('#acct-save').on('click', function() {
     MyApi.saveAccountInfo();
+  });
+
+  // DELETE ACCOUNT INFORMATION:
+  $('#acct-delete').on('click', function() {
+    MyApi.deleteAccount();
   });
 
 });
