@@ -38,13 +38,19 @@ $(document).ready(function() {
   $('#showpage').hide();
   $('#registerpage').hide();
   $('#loginpage').hide();
+  $('.myaccount').hide();
+  $('.logout').hide();
 
   //////////////////////////////////////////////
   // BEGIN: show appropriate page; hide the rest
   //////////////////////////////////////////////
 
-  $('#logo').on('click', function(event) {
-    event.preventDefault();
+  $('#logo').on('click', function(e) {
+    e.preventDefault();
+    displayHomePage();
+  });
+
+  var displayHomePage = function() {
     $('#carousel').show();
     $('#bikepage').hide();
     $('#accessoriespage').hide();
@@ -52,7 +58,8 @@ $(document).ready(function() {
     $('#registerpage').hide();
     $('#loginpage').hide();
     $('#cartpage').hide();
-  });
+    $('.accessoriespage').hide();
+  };
 
   $('.bicycles').on('click', function(event) {
     event.preventDefault();
@@ -187,6 +194,9 @@ $(document).ready(function() {
       method: 'POST'
     }).done(function(data, textStatus, jqxhr){
       console.log(data);
+      displayHomePage();
+      $('.myaccount, .logout').show();
+      $('.register, .login').hide();
       // simplestorage
     }).fail(function(jqxhr, textStatus, errorThrown){
       // $('#login-alert').removeClass('hide');
@@ -196,7 +206,7 @@ $(document).ready(function() {
 
   // SIGN UP:
   $('#registration-submit').on('click', function(e) {
-    e.preventDefault();
+    // e.preventDefault();
     $.ajax(server + '/signup', {
       contentType: 'application/json',
       processData: false,
@@ -213,6 +223,26 @@ $(document).ready(function() {
       // $('#result').val('registration failed');
       console.log(jqxhr.responseText);
     });
+  });
+
+  // LOG OUT:
+  $('.logout').on('click', function() {
+    $.ajax(server + '/logout', {
+      contentType: 'application/json',
+      processData: false
+    }).done(function(data, textStatus, jqxhr) {
+      $('.logout, .myaccount').hide(); // show logout button
+      $('.login, register').show(); // hide login button
+      console.log(data);
+    }).fail(function(jqxhr, textStatus, errorThrown) {
+      console.log(jqxhr.responseText);
+    });
+  });
+
+  // USER ACCOUNT;
+  $('.myaccount').on('click', function() {
+    displayHomePage();
+    $('#carousel, .accessoriespage').hide();
   });
 
 });
