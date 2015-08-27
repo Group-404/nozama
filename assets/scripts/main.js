@@ -66,16 +66,16 @@ $(document).ready(function() {
 
   });
 
-  $('.accessories').on('click', function(event) {
-    event.preventDefault();
-    $('#accessoriespage').show();
-    $('#carousel').hide();
-    $('#bikepage').hide();
-    $('#showpage').hide();
-    $('#registerpage').hide();
-    $('#loginpage').hide();
-    $('#cartpage').hide();
-  });
+  // $('.accessories').on('click', function(event) {
+  //   event.preventDefault();
+  //   $('#accessoriespage').show();
+  //   $('#carousel').hide();
+  //   $('#bikepage').hide();
+  //   $('#showpage').hide();
+  //   $('#registerpage').hide();
+  //   $('#loginpage').hide();
+  //   $('#cartpage').hide();
+  // });
 
   function classShowClickHandler1(event) {
     console.log("show click");
@@ -138,31 +138,32 @@ $(document).ready(function() {
     get_bicycles();
   });
 
-  $('.accessories').on('click', function() {
-    console.log ('accessories button');
-    var products = data.products;
-    var accessories = $.grep(products, function(e) { return e.category !== 'bicycles';
-    });
-    $('#accessoryResults').html(View.accessoryIndexHTML({accessories: accessories}));
-  });
+  // $('.accessories').on('click', function() {
+  //   console.log ('accessories button');
+  //   var products = data.products;
+  //   var accessories = $.grep(products, function(e) { return e.category !== 'bicycles';
+  //   });
+  //   $('#accessoryResults').html(View.accessoryIndexHTML({accessories: accessories}));
+  // });
 
   function classShowClickHandler2(event) {
-    console.log('show cliked, data is:  ' + data.products);
-    var products = data.products;
-    console.log(data.products);
-
     var id = $(event.target).data('id');
-
-    var product = $.grep(products, function(e) {
-      return e.id === id;
+    $.ajax({
+     url: server + '/products/' + id,
+     type: 'GET',
+     dataType: 'json',
+    })
+    .done(function(product) {
+     $('#productResults').html(View.itemShowHTML({product: product}));
+     console.log(product);
+    })
+    .fail(function() {
+     console.log("error");
+    })
+    .always(function() {
+     console.log("complete");
     });
-
-    $('#productResults').html(View.itemShowHTML({product: product}));
-  }
-
-  window.Main.classShowClickHandler2 = classShowClickHandler2;
-
-  $('.show').on('click', classShowClickHandler2);
+  };
 
   //
   // $("#products").html(View.productIndexHTML({products: bikes}));
