@@ -30,9 +30,11 @@
   </script>
 
 <!-- Stripe checkout form -->
-<form action="" method="POST" id="payment-form">
+<form action="http://localhost:3000/payment" method="POST" id="payment-form">
   <h2>Your order:</h2>
   <div id="cart-result"></div>
+  <div id="tax">State tax: 7%</div>
+  <div id="shipping">Shipping: 10.00</div>
   <h3>Please enter your payment information below:</h3>
   <span class="payment-errors"></span>
 
@@ -68,6 +70,7 @@
 <script src="node_modules/handlebars/dist/handlebars.js"></script>
 <script src="assets/scripts/view.js" type="text/javascript"></script>
 <script src="assets/scripts/payment.js" type="text/javascript"></script>
+<script src="assets/scripts/ajax.js" type="text/javascript"></script>
 <script src="assets/scripts/main.js" type="text/javascript"></script>
 
 </body>
