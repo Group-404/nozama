@@ -16,8 +16,8 @@ var get_bicycles = function() {
     console.log('products = ' + response);
     var bicycles = $.grep(response, function(e) { return e.category === 'bicycles'; });
     $('#bicycleResults').html(View.bicycleIndexHTML({bicycles: bicycles}));
-    $('.show').on('click', Main.classShowClickHandler1);
-    $('.show').on('click', Main.classShowClickHandler2);
+    $('.show').on('click', Main.classShowClickHandler1); // WAT
+    $('.show').on('click', Main.classShowClickHandler2); // WAT
   }).fail(function(error){
     console.log(error);
   });
