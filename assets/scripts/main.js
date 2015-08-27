@@ -1,6 +1,9 @@
 'use strict';
 
 var server = '//localhost:3000';
+
+var Catalog = Catalog || {};
+var Order = Order || {};
 // var server = '[production server name goes here]';
 
 // Fake database. Delete when we connect to back-end.
@@ -24,6 +27,8 @@ var server = '//localhost:3000';
 //////////////////////////////////////////////
 
 $(document).ready(function() {
+
+  Catalog.seedCatalog();
 
   window.Main = window.Main || {};
 
@@ -185,15 +190,15 @@ $(document).ready(function() {
         email: $('#emailLogin').val(),
         password: $('#passwordLogin').val()
       }),
-      // xhrFields: {
-      //   withCredentials: true
-      // },
+      xhrFields: {
+        withCredentials: true
+      },
       // dataType: 'json',
       method: 'POST'
     }).done(function(data, textStatus, jqxhr){
       console.log(data);
-      // simpleStorage.set('accountData', data);
-      // console.log(simpleStorage.get('accountData'));
+      simpleStorage.set('accountData', data);
+      console.log("simpleStorage: " + simpleStorage.get('accountData'));
       displayHomePage();
       $('.myaccount, .logout').show();
       $('.register, .login').hide();
@@ -203,6 +208,8 @@ $(document).ready(function() {
       console.error(jqxhr.responseText);
     });
   });
+
+  // simpleStorage.index();
 
   // SIGN UP:
   $('#registration-submit').on('click', function(e) {
@@ -245,16 +252,36 @@ $(document).ready(function() {
     $('#carousel, .accessoriespage, .accessorieslink, .accessoriesheader, .spacer').removeClass('show').hide();
     $('#account').show();
 
-    // $.ajax(server + '/displayAccount', {
-    //   method: "GET"
-    // }).done(function(data) {
-    //   console.log(data)
-    //   var templatingFunction = Handlebars.compile($('#display-account-template').html());
-    //   var html = templatingFunction({account: data.account});
-    // }).fail(function(jqxhr, textStatus, errorThrown) {
-    //   console.error(jqxhr.responseText);
-    // });
+    $.ajax(server + '/displayAccount', {
+      xhrFields: {
+        withCredentials: true
+      },
+      method: "GET"
+    }).done(function(data) {
+      console.log(data)
+      // var templatingFunction = Handlebars.compile($('#display-account-template').html());
+      // var html = templatingFunction({account: data});
+    }).fail(function(jqxhr, textStatus, errorThrown) {
+      console.error(jqxhr.responseText);
+    });
+  });
 
+  $('#getOrders').on('click', function() {
+    $.ajax(server + '/orders', {
+      xhrFields: {
+        withCredentials: true
+      }
+    }).done(function(data) {
+      console.log(data);
+      data.orders.forEach(function(order){
+        Order.newOrder(order);
+      });
+      console.log(Order.orders);
+      // var templatingFunction = Handlebars.compile($('#display-account-template').html());
+      // var html = templatingFunction({account: data});
+    }).fail(function(jqxhr, textStatus, errorThrown) {
+      console.error(jqxhr.responseText);
+    });
   });
 
 });
