@@ -9,6 +9,7 @@ var showPage = (function(){
       $('#showpage').hide();
       $('#registerpage').hide();
       $('#loginpage').hide();
+      $('#cartpage').hide();
       $('#account').hide();
     },
     bikePage: function(){
