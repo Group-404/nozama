@@ -88,6 +88,47 @@ var MyApi = (function(stripeToken){
         var templatingFunction = Handlebars.compile($('#display-account-template').html());
         var html = templatingFunction(data);
         $('#display-account').html(html);
+        $('[name=acct-state]').val(data.profile.state);
+      }).fail(function(jqxhr, textStatus, errorThrown) {
+        console.error(jqxhr.responseText);
+      });
+    },
+    saveAccountInfo: function() {
+          // var profile = {
+          //         moniker: $('#acct-moniker').val(),
+          //         location: $('#acct-location').val(),
+          //         email_or_phone: $("input[name='acct-phone-or-email']:checked").val(),
+          //         phone_number: $('#acct-phone-field').val(),
+          //         opted_in: findOptInSelection(),
+          //         };
+      $.ajax({
+        url: server + '/updateAccount',
+        xhrFields: {
+          withCredentials: true
+        },
+        contentType: 'application/json',
+        method: 'PATCH',
+        data: JSON.stringify({
+          user: {
+            email: $('#acct-email').val()
+          },
+          profile: {
+            phoneNumber: $('#acct-phone').val(),
+            lastName: $('#acct-lastname').val(),
+            firstName: $('#acct-firstname').val(),
+            addressOne: $('#acct-addressone').val(),
+            addressTwo: $('#acct-addresstwo').val(),
+            city: $('#acct-city').val(),
+            state: $('[name=acct-state]').val(),
+            zipCode: $('#acct-zip').val(),
+          } //,
+          // profile: {
+
+          // }
+        }),
+
+      }).done(function(data) {
+        console.log(data);
       }).fail(function(jqxhr, textStatus, errorThrown) {
         console.error(jqxhr.responseText);
       });

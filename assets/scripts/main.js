@@ -162,6 +162,11 @@ $(document).ready(function() {
     MyApi.getOrders();
   });
 
+  // SAVE ACCOUNT INFORMATION:
+  $('#acct-save').on('click', function() {
+    MyApi.saveAccountInfo();
+  });
+
 });
 
 //////////////////////////////////////////////
