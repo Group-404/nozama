@@ -463,7 +463,10 @@
   <!-- MY ACCOUNT -->
   <div id="account">
     <div class="pageheader">My Account</div>
-    <div class="acct-fields">
+
+    <div id="display-account"> <!--</div>-->
+    <!-- <script type="text/x-handlebars-template" id="display-account-template">-->
+
       <label for="acct-email">Email:</label>
       <input type="text" name="acct-email" id="acct-email">
       <label for="acct-phone">Phone Number:</label>
@@ -535,12 +538,13 @@
           <option value="50">WY</option>
         </select>
       </span>
-  <!--     <label for="acct-country">Country:</label>
-      <input type="text" name="acct-country" id="acct-country"> -->
       <label for="acct-zip">Zip code:</label>
       <input type="text" name="acct-zip" id="acct-zip">
 
-      <a id="login-submit" class="btn btn-md btn-custom marginRegisterLogin" href="#" role="button">Save Changes</a>
+      <a id="acct-save" class="btn btn-md btn-custom" href="#" role="button">Save Changes</a>
+
+      <a id="acct=delete" class="btn btn-md btn-custom" href="#" role="button">Delete Account</a>
+    <!-- </script> -->
     </div>
   </div>
 

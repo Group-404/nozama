@@ -17,7 +17,6 @@ var server = '//localhost:3000';
 //   {id: 10, category: 'locks', name: 'Kryptonite Series 2 Mini Ulock - Black',  price: 35, imageURL: 'lock_black_lg.jpg', thumbnailURL: 'lock_black_sm.jpg'},
 // ]};
 
-var server = '//localhost:3000';
 // var server = '[place production server here]';
 
 //////////////////////////////////////////////
@@ -178,6 +177,7 @@ $(document).ready(function() {
   // LOG IN:
   $('#login-submit').on('click', function(e){
     e.preventDefault();
+
     $.ajax(server + '/login', {
       contentType: 'application/json',
       processData: false,
@@ -185,17 +185,22 @@ $(document).ready(function() {
         email: $('#emailLogin').val(),
         password: $('#passwordLogin').val()
       }),
-      dataType: 'json',
+      // xhrFields: {
+      //   withCredentials: true
+      // },
+      // dataType: 'json',
       method: 'POST'
     }).done(function(data, textStatus, jqxhr){
       console.log(data);
+      // simpleStorage.set('accountData', data);
+      // console.log(simpleStorage.get('accountData'));
       displayHomePage();
       $('.myaccount, .logout').show();
       $('.register, .login').hide();
       // simplestorage
     }).fail(function(jqxhr, textStatus, errorThrown){
       // $('#login-alert').removeClass('hide');
-      console.log(jqxhr.responseText);
+      console.error(jqxhr.responseText);
     });
   });
 
@@ -216,7 +221,7 @@ $(document).ready(function() {
       console.log(data);
     }).fail(function(jqxhr, textStatus, errorThrown){
       // $('#result').val('registration failed');
-      console.log(jqxhr.responseText);
+      console.error(jqxhr.responseText);
     });
   });
 
@@ -230,7 +235,7 @@ $(document).ready(function() {
       $('.login, register').show(); // hide login button
       console.log(data);
     }).fail(function(jqxhr, textStatus, errorThrown) {
-      console.log(jqxhr.responseText);
+      console.error(jqxhr.responseText);
     });
   });
 
@@ -239,6 +244,17 @@ $(document).ready(function() {
     displayHomePage();
     $('#carousel, .accessoriespage, .accessorieslink, .accessoriesheader, .spacer').removeClass('show').hide();
     $('#account').show();
+
+    // $.ajax(server + '/displayAccount', {
+    //   method: "GET"
+    // }).done(function(data) {
+    //   console.log(data)
+    //   var templatingFunction = Handlebars.compile($('#display-account-template').html());
+    //   var html = templatingFunction({account: data.account});
+    // }).fail(function(jqxhr, textStatus, errorThrown) {
+    //   console.error(jqxhr.responseText);
+    // });
+
   });
 
 });
