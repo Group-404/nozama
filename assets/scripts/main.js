@@ -145,20 +145,34 @@ $(document).ready(function() {
     });
     $('#accessoryResults').html(View.accessoryIndexHTML({accessories: accessories}));
   });
-
+  var cartValue = [];
+  // simpleStorage.set("cart", cartValue);
   function classShowClickHandler2(event) {
-    console.log('show cliked, data is:  ' + data.products);
-    var products = data.products;
-    console.log(data.products);
+   var id = $(event.target).data('id');
+     $.ajax({
+       url: server + '/products/' + id,
+       type: 'GET',
+       dataType: 'json'
+     })
+     .done(function(product) {
+      cartValue.push({quanity:1 , item:product.id});
+       $('#content').html(View.itemShowHTML({product: product}));
+       simpleStorage.set('cart', cartValue);
+       console.log(product);
+       list = simpleStorage.index();
+          console.log(list);
 
-    var id = $(event.target).data('id');
+     })
+     .fail(function() {
+       console.log("error");
+     })
+     .always(function() {
+       console.log("complete");
+     });
+  };
 
-    var product = $.grep(products, function(e) {
-      return e.id === id;
-    });
 
-    $('#productResults').html(View.itemShowHTML({product: product}));
-  }
+
 
   window.Main.classShowClickHandler2 = classShowClickHandler2;
 
