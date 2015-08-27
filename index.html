@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="assets/styles/main.css">
   <link rel="stylesheet" href="assets/styles/carousel.css">
+  <script src="node_modules/handlebars/dist/handlebars.js"></script>
 </head>
 <body>
 
@@ -444,90 +445,90 @@
   <div id="account">
     <div class="pageheader">My Account</div>
 
-    <div id="display-account"> <!--</div>-->
-    <!-- <script type="text/x-handlebars-template" id="display-account-template">-->
+    <div id="display-account"></div>
+     <script type="text/x-handlebars-template" id="display-account-template">
 
       <label for="acct-email">Email:</label>
-      <input type="text" name="acct-email" id="acct-email">
+      <input type="text" name="acct-email" id="acct-email" value="{{user.email}}">
       <label for="acct-phone">Phone Number:</label>
-      <input type="text" name="acct-phone" id="acct-phone">
+      <input type="text" name="acct-phone" id="acct-phone" value="{{profile.phoneNumber}}">
       <label for="acct-firstname">First name:</label>
-      <input type="text" name="acct-firstname" id="acct-firstname">
+      <input type="text" name="acct-firstname" id="acct-firstname" value="{{profile.firstName}}">
       <label for="acct-firstname">Last name:</label>
-      <input type="text" name="acct-lastname" id="acct-lastname">
+      <input type="text" name="acct-lastname" id="acct-lastname" value="{{profile.lastName}}">
       <label for="acct-addressone">Address 1:</label>
-      <input type="text" name="acct-addressone" id="acct-addressone">
+      <input type="text" name="acct-addressone" id="acct-addressone" value="{{profile.addressOne}}">
       <label for="acct-addresstwo">Address 2:</label>
-      <input type="text" name="acct-addresstwo" id="acct-addresstwo">
+      <input type="text" name="acct-addresstwo" id="acct-addresstwo" value="{{profile.addressTwo}}">
       <label for="acct-city">City:</label>
-      <input type="text" name="acct-city" id="acct-city">
+      <input type="text" name="acct-city" id="acct-city" value="{{profile.city}}">
       <label for="acct-state">State:</label>
       <span id="state-div">
         <select name="acct-state" id="acct-state">
-          <option value="1">AK</option>
-          <option value="2">AL</option>
-          <option value="3">AR</option>
-          <option value="4">AZ</option>
-          <option value="5">CA</option>
-          <option value="6">CO</option>
-          <option value="7">CT</option>
-          <option value="51">DC</option>
-          <option value="8">DE</option>
-          <option value="9">FL</option>
-          <option value="10">GA</option>
-          <option value="11">HI</option>
-          <option value="12">IA</option>
-          <option value="13">ID</option>
-          <option value="14">IL</option>
-          <option value="15">IN</option>
-          <option value="16">KS</option>
-          <option value="17">KY</option>
-          <option value="18">LA</option>
-          <option value="19">MA</option>
-          <option value="20">MD</option>
-          <option value="21">ME</option>
-          <option value="22">MI</option>
-          <option value="23">MN</option>
-          <option value="24">MO</option>
-          <option value="25">MS</option>
-          <option value="26">MT</option>
-          <option value="27">NC</option>
-          <option value="28">ND</option>
-          <option value="29">NE</option>
-          <option value="30">NH</option>
-          <option value="31">NJ</option>
-          <option value="32">NM</option>
-          <option value="33">NV</option>
-          <option value="34">NY</option>
-          <option value="35">OH</option>
-          <option value="36">OK</option>
-          <option value="37">OR</option>
-          <option value="38">PA</option>
-          <option value="52">PR</option>
-          <option value="39">RI</option>
-          <option value="40">SC</option>
-          <option value="41">SD</option>
-          <option value="42">TN</option>
-          <option value="43">TX</option>
-          <option value="44">UT</option>
-          <option value="45">VA</option>
-          <option value="46">VT</option>
-          <option value="47">WA</option>
-          <option value="48">WI</option>
-          <option value="49">WV</option>
-          <option value="50">WY</option>
+          <option value="AK">AK</option>
+          <option value="AL">AL</option>
+          <option value="AR">AR</option>
+          <option value="AZ">AZ</option>
+          <option value="CA">CA</option>
+          <option value="CO">CO</option>
+          <option value="CT">CT</option>
+          <option value="DC">DC</option>
+          <option value="DE">DE</option>
+          <option value="FL">FL</option>
+          <option value="GA">GA</option>
+          <option value="HI">HI</option>
+          <option value="IA">IA</option>
+          <option value="ID">ID</option>
+          <option value="IL">IL</option>
+          <option value="IN">IN</option>
+          <option value="KS">KS</option>
+          <option value="KY">KY</option>
+          <option value="LA">LA</option>
+          <option value="MA">MA</option>
+          <option value="MD">MD</option>
+          <option value="ME">ME</option>
+          <option value="MI">MI</option>
+          <option value="MN">MN</option>
+          <option value="MO">MO</option>
+          <option value="MS">MS</option>
+          <option value="MT">MT</option>
+          <option value="NC">NC</option>
+          <option value="ND">ND</option>
+          <option value="NE">NE</option>
+          <option value="NH">NH</option>
+          <option value="NJ">NJ</option>
+          <option value="NM">NM</option>
+          <option value="NV">NV</option>
+          <option value="NY">NY</option>
+          <option value="OH">OH</option>
+          <option value="OK">OK</option>
+          <option value="OR">OR</option>
+          <option value="PA">PA</option>
+          <option value="PR">PR</option>
+          <option value="RI">RI</option>
+          <option value="SC">SC</option>
+          <option value="SD">SD</option>
+          <option value="TN">TN</option>
+          <option value="TX">TX</option>
+          <option value="UT">UT</option>
+          <option value="VA">VA</option>
+          <option value="VT">VT</option>
+          <option value="WA">WA</option>
+          <option value="WI">WI</option>
+          <option value="WV">WV</option>
+          <option value="WY">WY</option>
         </select>
       </span>
       <label for="acct-zip">Zip code:</label>
-      <input type="text" name="acct-zip" id="acct-zip">
-
+      <input type="text" name="acct-zip" id="acct-zip" value="{{profile.zipCode}}">
+    </script>
       <a id="acct-save" class="btn btn-md btn-custom" href="#" role="button">Save Changes</a>
 
       <a id="acct-delete" class="btn btn-md btn-custom" href="#" role="button">Delete Account</a>
 
       <a id="getOrders" class="btn btn-md btn-custom" href="#" role="button">Get Orders</a>
 
-    <!-- </script> -->
+
     </div>
   </div>
 
@@ -566,7 +567,6 @@
 
   <script src="node_modules/jquery/dist/jquery.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="node_modules/handlebars/dist/handlebars.js"></script>
   <script src="assets/scripts/catalog.js"></script>
   <script src="assets/scripts/orders.js"></script>
   <script src="assets/scripts/view.js" type="text/javascript"></script>
