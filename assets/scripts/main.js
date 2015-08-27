@@ -1,7 +1,11 @@
 'use strict';
 
 var server = '//localhost:3000';
+
+var Catalog = Catalog || {};
+var Order = Order || {};
 // var server = '[production server name goes here]';
+
 
 //////////////////////////////////////////////
 // BEGIN: document.ready
@@ -9,13 +13,15 @@ var server = '//localhost:3000';
 
 $(document).ready(function() {
 
-  // WAT
+  Catalog.seedCatalog();
+
   window.Main = window.Main || {};
 
   // invokes carousel
   $('#carousel').carousel();
 
   // initial state of landing page
+
   showPage.landingPage();
 
   //////////////////////////////////////////////
@@ -34,13 +40,20 @@ $(document).ready(function() {
     showPage.accessoriesPage();
   });
 
+  $('.myaccount').hide();
+  $('.logout').hide();
+
+  //////////////////////////////////////////////
+  // BEGIN: show appropriate page; hide the rest
+  //////////////////////////////////////////////
+
   function classShowClickHandler1(event) {
     console.log("show click");
     event.preventDefault();
     $('#showpage').show();
     $('#carousel').hide();
     $('#bikepage').hide();
-    $('#accessoriespage').hide();
+    $('.accessoriespage').hide();
     $('#registerpage').hide();
     $('#loginpage').hide();
     $('#cartpage').hide();
@@ -62,6 +75,7 @@ $(document).ready(function() {
   $('.cart').on('click', function(event) {
     showPage.cartPage();
   });
+
 
   //////////////////////////////////////////////
   // END: page load handlers
@@ -120,6 +134,33 @@ $(document).ready(function() {
   //////////////////////////////////////////////
   // END: prepare all handlebars objects
   //////////////////////////////////////////////
+
+
+  // LOG IN:
+  $('#login-submit').on('click', function(e){
+    e.preventDefault();
+    MyApi.login();
+  });
+
+  // SIGN UP:
+  $('#registration-submit').on('click', function(e) {
+    MyApi.register();
+  });
+
+  // LOG OUT:
+  $('.logout').on('click', function() {
+    MyApi.logout();
+  });
+
+  // DISPLAY ACCOUNT INFORMATION:
+  $('.myaccount').on('click', function() {
+    MyApi.displayAccountInfo();
+  });
+
+  // DISPLAY ORDERS;
+  $('#getOrders').on('click', function() {
+    MyApi.getOrders();
+  });
 
 });
 
