@@ -202,8 +202,8 @@ $(document).ready(function() {
   $('#getOrders').on('click', function() {
     MyApi.getOrders();
   });
-var viewCartList = document.createElement("DIV");
-  $('#showPage').on('click', '.dog', function(event){
+// var viewCartList = document.createElement("DIV");
+  $('#showPage').on('click', '.cart', function(event){
     var quantity = $('#quantity').val();
 
     $.ajax({
