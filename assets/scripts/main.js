@@ -219,6 +219,7 @@ $(document).ready(function() {
     // MyApi.getOrderProductInfo(7);
     MyApi.getOrders();
   });
+
 // var viewCartList = document.createElement("DIV");
   $('#showPage').on('click', '.cart', function(event){
     var quantity = $('#quantity').val();
@@ -238,6 +239,7 @@ $(document).ready(function() {
     .always(function() {
       console.log("complete");
     });
+  });
 
   // SEE ACCOUNT FROM ORDER DETAILS:
   $('#account').on('click', '#myaccount', function() {
@@ -257,6 +259,7 @@ $(document).ready(function() {
     });
     console.log(cartArray);
   });
+
 });
 
 //////////////////////////////////////////////
