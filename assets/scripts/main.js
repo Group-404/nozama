@@ -1,6 +1,6 @@
 'use strict';
 
-var server = '//localhost:3000';
+var server = 'http://localhost:3000';
 
 var Catalog = Catalog || {};
 var Order = Order || {};
@@ -52,7 +52,7 @@ $(document).ready(function() {
   function classShowClickHandler1(event) {
     console.log("show click");
     event.preventDefault();
-    $('#showpage').show();
+    $('#showPage').show();
     $('#carousel').hide();
     $('#bikepage').hide();
     $('.accessoriespage').hide();
@@ -75,9 +75,31 @@ $(document).ready(function() {
   });
 
   $('.cart').on('click', function(event) {
+    var id = $(event.target).data('id');
+    console.log();
     showPage.cartPage();
+    $.ajax({
+      url: server + '/products/' + id,
+      type: 'GET',
+      dataType: 'json',
+    })
+    .done(function() {
+      console.log("success");
+
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+
   });
 
+  $('.viewcart').on('click', function() {
+    showPage.cartPage();
+
+  });
 
   //////////////////////////////////////////////
   // END: page load handlers
@@ -88,30 +110,46 @@ $(document).ready(function() {
   });
 
   /// CART
-  var cartValue = [];
+  var cartValue = {};
   var listSimpleStorage = simpleStorage.index();
   // simpleStorage.set("cart", cartValue);
   function classShowClickHandler2(event) {
-   var id = $(event.target).data('id');
-     $.ajax({
-       url: server + '/products/' + id,
-       type: 'GET',
-       dataType: 'json'
-     })
-     .done(function(product) {
-      cartValue.push({quantity:1 , ProductId:product.id});
-       $('#content').html(View.itemShowHTML({product: product}));
-       simpleStorage.set('cart', cartValue);
-       console.log("product id is:" + product.id);
-       console.log(listSimpleStorage);
+    var id = $(event.target).data('id');
+    $.ajax({
+     url: server + '/products/' + id,
+     type: 'GET',
+     dataType: 'json'
+    })
+    .done(function(product) {
+      $('#productResults').html(View.itemShowHTML({product: product}));
 
-     })
-     .fail(function() {
-       console.log("error");
-     })
-     .always(function() {
-       console.log("complete");
-     });
+      console.log("product id is:" + product.id);
+      console.log(listSimpleStorage);
+
+      $('#productResults .cart').on('click', function(event){
+        event.preventDefault();
+        var qty = parseInt($('#productResults #quantity').val(), 10);
+        var cart = simpleStorage.get('cart') || {};
+        if(Number.isNaN(qty)) {
+          qty = 0;
+        }
+        if(cart[id]) {
+          cart[id].quantity += qty;
+        } else {
+          cart[id] = {
+            quantity : qty
+          };
+        }
+        cart[id].product = product;
+        simpleStorage.set('cart', cart);
+      });
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
   };
 
 
@@ -163,8 +201,28 @@ $(document).ready(function() {
     MyApi.getOrders();
   });
 
+  // ADD TO CART
+  $('#showPage').on('click', '.cart', function(event){
+    var quantity = $('#quantity').val();
+
+    $.ajax({
+      url: server + '/products/' + $(this).data('id'),
+      type: 'GET',
+      dataType: 'json',
+    })
+    .done(function(product) {
+      $('#viewcart').append(View.viewCartHTML({product: product , quantity: quantity}));
+      console.log("product is: " + product);
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+
+
   // CHECKOUT & PAYMENT
-  $('#cart-result').html('lets pretend this came from the cart');
 
   // if !user, prompt to log in
   // if user, show profile
@@ -187,7 +245,6 @@ $(document).ready(function() {
     // Prevent the form from submitting with the default action
     return false;
   });
-
 });
 
 //////////////////////////////////////////////

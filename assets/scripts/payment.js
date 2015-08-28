@@ -14,6 +14,17 @@ var Payment = (function(){
   var _responseHandler = function(status, response) {
     var $form = $('#payment-form');
 
+    //manipulates cart from simpleStorage into cartArray
+    var cart = simpleStorage.get('cart');
+    var cartArray = [];
+    Object.keys(cart).forEach(function(cVal) {
+      var product = {
+        id : cVal,
+        quantity : cart[cVal].quantity
+      };
+      cartArray.push(product);
+    });
+
     if (response.error) {
       // Show the errors on the form
       $form.find('.payment-errors').text(response.error.message);
@@ -23,7 +34,7 @@ var Payment = (function(){
       var token = response.id;
       // Insert the token into the form so it gets submitted to the server
       // $form.append($('<input type="hidden" name="stripeToken" />').val(token));
-      MyApi.createPayment(token);
+      MyApi.createPayment(token, cartArray);
       // and submit
       // $form.get(0).submit();
     }

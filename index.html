@@ -35,7 +35,7 @@
       <div class="btn-group nav login"><a class="navlink" href="#">Login</a></div>
       <div class="btn-group nav myaccount"><a class="navlink" href="#">My Account</a></div>
       <div class="btn-group nav logout"><a class="navlink" href="#">Log Out</a></div>
-      <div class="btn-group headercart cart" role="group" aria-label="cart"><a href="#"><img src="http://nozama.s3-us-west-2.amazonaws.com/cart.png" alt=""></a></div>
+      <div class="btn-group headercart viewcart" role="group" aria-label="cart"><a href="#"><img src="http://nozama.s3-us-west-2.amazonaws.com/cart.png" alt=""></a></div>
     </div>
   </header>
 
@@ -50,7 +50,6 @@
   * START: home page
   ************************************************
    -->
-  <div id="content">
   <div id="carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -92,7 +91,6 @@
     <a href="#carousel" class="right carousel-control" data-slide="next">
       <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
-  </div>
   </div>
 
   <!--
@@ -206,17 +204,15 @@
 
   <div id="cartpage">
     <div>
-      <form id="payment-form">
-      <!-- <form id="payment-form"> -->
-        <br><br><br><br><br>
-        <h2>Your shopping cart:</h2>
-        <div id="cart-result"></div>
-        <div id="tax">State tax: 7%</div>
-        <div id="shipping">Shipping: 10.00</div>
-        <div>Total cost: <span id="total"></span></div>
-        <div id="confirm-user"></div>
-        <h3>Please enter your payment information below:</h3>
+      <div class="pageheader">Shopping Cart</div>
+      <div id="viewcart"></div>
+      <div id="tax">State tax: 7%</div>
+      <div id="shipping">Shipping: 10.00</div>
+      <div>Total cost: <span id="total"></span></div>
+      <div id="confirm-user"></div>
 
+      <form id="payment-form">
+        <h3>Please enter your payment information below:</h3>
         <a tabindex="0" class="btn btn-default" role="button" data-toggle="popover" data-trigger="focus" title="Test data" data-content="Use credit card number 4242424242424242 with any CVC and a valid expiration date.">Testing this site?</a><br><br>
 
         <div class="payment-errors"></div>
@@ -232,13 +228,37 @@
         </div>
 
         <div class="form-row">
-          <label>
+          <!-- <label>
             <span>Expiration (MM/YYYY)</span></label>
           <input id="card-exp-month" type="text" size="2" data-stripe="exp-month"/>
-          <input id="card-exp-year" type="text" size="4" data-stripe="exp-year"/>
+          <input id="card-exp-year" type="text" size="4" data-stripe="exp-year"/> -->
+          <label for="expdate">Expiration Date:</label>
+            <select id="card-exp-month" name="CCExpiresMonth">
+              <option value="" selected>--Month--
+              <option value="01">January
+              <option value="02">February
+              <option value="03">March
+              <option value="04">April
+              <option value="05">May
+              <option value="06">June
+              <option value="07">July
+              <option value="08">August
+              <option value="09">September
+              <option value="10">October
+              <option value="11">November
+              <option value="12">December
+            </select>
+            <select id="card-exp-year" name="CCExpiresYear">
+            <option value="" selected>--Year--
+              <option value="15">2015
+              <option value="16">2016
+              <option value="17">2017
+              <option value="18">2018
+              <option value="19">2019
+              <option value="20">2020
+            </select>
         </div>
-
-        <button>Submit Payment</button>
+        <button class="btn btn-md btn-custom marginRegisterLogin">Submit Payment</button>
       </form>
     </div>
   </div>
@@ -308,18 +328,136 @@
 
   <!--
   ************************************************
+<<<<<<< HEAD
+=======
+  * START: accessory template
+  ************************************************
+   -->
+
+<!--   <script id="accessory-template" type="text/x-handlebars-template">
+    <div id="accessoriespage">
+      <div class="pageheader">Accessories</div>
+      <div class="accessoriesheader">Helmets</div>
+      <hr>
+
+    </div>
+  </script>
+
+
+  TO DELETE: hardcoded products
+
+    <div class="accessoriespage">
+      <a class="accessorieslink show" href="#">
+        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/helmet_shadow_sm.jpg" alt="" />
+        <p class="noblankline">Giro Reverb Helmet</p>
+        <p class="noblankline">Matte Gray</p>
+        <p>$55.00</p>
+      </a>
+    </div>
+
+    <div class="accessoriespage">
+      <a class="accessorieslink show" href="#">
+        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/helmet_yellow_sm.jpg" alt="" />
+        <p class="noblankline">Giro Reverb Helmet</p>
+        <p class="noblankline">Highlight Yellow</p>
+        <p>$55.00</p>
+      </a>
+    </div>
+
+    <div class="accessoriespage">
+      <a class="accessorieslink show" href="#">
+        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/helmet_white_sm.jpg" alt="" />
+        <p class="noblankline">Giro Reverb Helmet</p>
+        <p class="noblankline">Matte White CA Bear</p>
+        <p>$55.00</p>
+      </a>
+    </div>
+
+    <div class="accessoriespage">
+      <a class="accessorieslink show" href="#">
+        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/helmet_red_sm.jpg" alt="" />
+        <p class="noblankline">Giro Reverb Helmet</p>
+        <p class="noblankline">Vintage Red</p>
+        <p>$55.00</p>
+      </a>
+    </div>
+
+    <p class="spacer">&nbsp;</p>
+    <p class="accessoriesheader">Locks</p>
+    <hr>
+
+    <div class="accessoriespage show">
+      <a class="accessorieslink" href="#">
+        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/lock_keeper_sm.jpg" alt="" />
+        <p class="noblankline">Kryptonite Keeper 12 Standard</p>
+        <p>$35.00</p>
+      </a>
+    </div>
+
+    <div class="accessoriespage">
+      <a class="accessorieslink show" href="#">
+        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/lock_red_sm.jpg" alt="" />
+        <p class="noblankline">Kryptonite Series 2 Mini Ulock - Red</p>
+        <p>$39.00</p>
+      </a>
+    </div>
+
+    <div class="accessoriespage">
+      <a class="accessorieslink show" href="#">
+        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/lock_white_sm.jpg" alt="" />
+        <p class="noblankline">Kryptonite Series 2 Mini Ulock - White</p>
+        <p>$39.00</p>
+      </a>
+    </div>
+
+    <div class="accessoriespage">
+      <a class="accessorieslink show" href="#">
+        <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/lock_black_sm.jpg" alt="" />
+        <p class="noblankline">Kryptonite Series 2 Mini Ulock - Black</p>
+        <p>$39.00</p>
+      </a>
+    </div> -->
+
+  <!--
+  ************************************************
+  * END: accessory template
+  ************************************************
+   -->
+  <!--
+  ************************************************
+  * START: ViewCart template
+  ************************************************
+   -->
+  <script id="viewcart-template" type="text/x-handlebars-template">
+    <div class="viewcart">
+      <ul class="cartItems">
+        <li>{{product.name}} Price: ${{product.price}} MSRP: ${{product.msrp}} Qty: {{quantity}}</li>
+      </ul>
+    </div>
+  </script>
+  <!--
+  ************************************************
+  * END: ViewCart template
+  ************************************************
+   -->
+  <!--
+  ************************************************
+>>>>>>> development
   * START: show template
   ************************************************
    -->
 
   <script id="show-template" type="text/x-handlebars-template">
-    <div class="pageheader">{{name}}</div>
+    <div class="pageheader">{{product.name}}</div>
 
     <div class="showpage">
-      <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/{{imageURL}}" alt="" />
-      <p class="textcentered">Price: ${{price}}</p>
+      <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/{{product.imageURL}}" alt="" />
+      <p class="textcentered">Price: ${{product.price}} </p>
+
+
       <p class="buttoncentered blankline">
-        <a class="btn btn-md btn-custom buttoncentered cart" href="#" role="button">Add to Cart</a>
+        <a class="btn btn-md btn-custom buttoncentered cart" href="#" role="button" data-id='{{product.id}}'>Add to Cart</a>
+        <input type="number" id="quantity" placeholder="Quantity">
       </p>
     </div>
   </script>
@@ -422,7 +560,6 @@
       <a id="acct-delete" class="btn btn-md btn-custom" href="#" role="button">Delete Account</a>
 
       <a id="getOrders" class="btn btn-md btn-custom" href="#" role="button">Get Orders</a>
-   </div>
   </div>
 
 
@@ -431,6 +568,7 @@
 <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="node_modules/handlebars/dist/handlebars.js"></script>
 <script src="node_modules/simplestorage.js/simpleStorage.js"></script>
+<script src="assets/scripts/cartManipulation.js" type="text/javascript"></script>
 <script src="assets/scripts/showPage.js" type="text/javascript"></script>
 <script src="assets/scripts/catalog.js" type="text/javascript"></script>
 <script src="assets/scripts/orders.js" type="text/javascript"></script>
@@ -438,7 +576,6 @@
 <script src="assets/scripts/payment.js" type="text/javascript"></script>
 <script src="assets/scripts/ajaxapicalls.js" type="text/javascript"></script>
 <script src="assets/scripts/main.js" type="text/javascript"></script>
-
 
 </body>
 </html>

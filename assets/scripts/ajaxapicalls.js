@@ -55,8 +55,8 @@ var MyApi = (function(stripeToken){
         console.log('products = ' + response);
         var bicycles = $.grep(response, function(e) { return e.category === 'bicycles'; });
         $('#bicycleResults').html(View.bicycleIndexHTML({bicycles: bicycles}));
-        $('.show').on('click', Main.classShowClickHandler1); // WAT
-        $('.show').on('click', Main.classShowClickHandler2); // WAT
+        $('#bicycleResults .show').on('click', Main.classShowClickHandler1); // WAT
+        $('#bicycleResults .show').on('click', Main.classShowClickHandler2); // WAT
       }).fail(function(error){
         console.log(error);
       });
@@ -109,13 +109,13 @@ var MyApi = (function(stripeToken){
         console.error(jqxhr.responseText);
       });
     },
-    createPayment: function(token){
+    createPayment: function(token, cartArray){
       $.ajax(server + '/payment', {
         contentType: 'application/json',
         processData: false,
         data: JSON.stringify({
           stripeToken: token,
-          cart: simpleStorage.get("cart")
+          cart: cartArray
         }),
         xhrFields: {
           withCredentials: true
@@ -124,6 +124,7 @@ var MyApi = (function(stripeToken){
         method: 'POST'
       }).done(function(data, textStatus, jqxhr){
         console.log(data);
+        $('#viewcart').html('');
         simpleStorage.set("recent-order", data.amount);
         simpleStorage.set("cart", "");
         $("#confirmation-number").html(Math.floor(Math.random() * (9999999 - 1000000)) + 1000000);
