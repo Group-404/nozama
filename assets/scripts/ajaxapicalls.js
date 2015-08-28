@@ -124,6 +124,7 @@ var MyApi = (function(stripeToken){
         method: 'POST'
       }).done(function(data, textStatus, jqxhr){
         console.log(data);
+        simpleStorage.set("recent-order", data.amount);
       }).fail(function(jqxhr, textStatus, errorThrown){
         // $('#login-alert').removeClass('hide');
         console.error(jqxhr.responseText);
