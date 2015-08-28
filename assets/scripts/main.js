@@ -190,7 +190,7 @@ $(document).ready(function() {
 
   // LOG OUT:
   $('.logout').on('click', function() {
-    MyApi.logout();
+    MyApi.logOut();
   });
 
   // DISPLAY ACCOUNT INFORMATION:
@@ -198,10 +198,28 @@ $(document).ready(function() {
     MyApi.displayAccountInfo();
   });
 
-  // DISPLAY ORDERS;
-  $('#getOrders').on('click', function() {
+  // SAVE ACCOUNT INFORMATION:
+  $('#account').on('click', '#acct-save', function() {
+    MyApi.saveAccountInfo();
+  });
+
+  // DELETE ACCOUNT INFORMATION:
+  $('#acct-delete').on('click', function() {
+    MyApi.deleteAccount();
+  });
+
+  // DISPLAY ORDERS:
+  $('#account').on('click', '#get-orders', function() {
+    MyApi.getOrderInfo();
+  });
+
+  // SEE ORDER DETAILS:
+  $('#account').on('click', '.order-details', function() {
+    // var selectedOrderId = $(this).data('id');
+    // MyApi.getOrderProductInfo(7);
     MyApi.getOrders();
   });
+
 // var viewCartList = document.createElement("DIV");
   $('#showPage').on('click', '.cart', function(event){
     var quantity = $('#quantity').val();
@@ -222,7 +240,11 @@ $(document).ready(function() {
     .always(function() {
       console.log("complete");
     });
+  });
 
+  // SEE ACCOUNT FROM ORDER DETAILS:
+  $('#account').on('click', '#myaccount', function() {
+    MyApi.displayAccountInfo();
   });
 
   // CHECKOUT
@@ -238,6 +260,7 @@ $(document).ready(function() {
     });
     console.log(cartArray);
   });
+
 });
 
 //////////////////////////////////////////////

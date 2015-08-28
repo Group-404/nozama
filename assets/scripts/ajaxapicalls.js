@@ -15,10 +15,8 @@ var MyApi = (function(stripeToken){
         dataType: 'json',
         method: 'POST'
       }).done(function(data, textStatus, jqxhr){
-        // $('#result').val(JSON.stringify(data));
         console.log(data);
       }).fail(function(jqxhr, textStatus, errorThrown){
-        // $('#result').val('registration failed');
         console.error(jqxhr.responseText);
       });
     },
@@ -33,16 +31,13 @@ var MyApi = (function(stripeToken){
         xhrFields: {
           withCredentials: true
         },
-        // dataType: 'json',
         method: 'POST'
       }).done(function(data, textStatus, jqxhr){
         console.log(data);
         $('.myaccount, .logout').show();
         $('.register, .login').hide();
         showPage.landingPage();
-        // simplestorage
       }).fail(function(jqxhr, textStatus, errorThrown){
-        // $('#login-alert').removeClass('hide');
         console.error(jqxhr.responseText);
       });
 
@@ -64,13 +59,14 @@ var MyApi = (function(stripeToken){
     showProduct: function(){
 
     },
-    logout: function() {
+    logOut: function() {
       $.ajax(server + '/logout', {
         contentType: 'application/json',
         processData: false
       }).done(function(data, textStatus, jqxhr) {
-        $('.logout, .myaccount').hide(); // show logout button
-        $('.login, register').show(); // hide login button
+        $('.logout, .myaccount').hide();
+        $('.login, register').show();
+        showPage.landingPage();
         console.log(data);
       }).fail(function(jqxhr, textStatus, errorThrown) {
         console.error(jqxhr.responseText);
@@ -85,29 +81,113 @@ var MyApi = (function(stripeToken){
       }).done(function(data) {
         console.log(data);
         showPage.accountPage();
-        var templatingFunction = Handlebars.compile($('#display-account-template').html());
-        var html = templatingFunction(data);
-        $('#display-account').html(html);
+        $('#display-account').html(View.accountShowHTML(data));
+        $('[name=acct-state]').val(data.profile.state);
       }).fail(function(jqxhr, textStatus, errorThrown) {
         console.error(jqxhr.responseText);
       });
     },
-    getOrders: function() {
+    saveAccountInfo: function() {
+      $.ajax({
+        url: server + '/updateAccount',
+        xhrFields: {
+          withCredentials: true
+        },
+        contentType: 'application/json',
+        method: 'PATCH',
+        data: JSON.stringify({
+          user: {
+            email: $('#acct-email').val()
+          },
+          profile: {
+            phoneNumber: $('#acct-phone').val(),
+            lastName: $('#acct-lastname').val(),
+            firstName: $('#acct-firstname').val(),
+            addressOne: $('#acct-addressone').val(),
+            addressTwo: $('#acct-addresstwo').val(),
+            city: $('#acct-city').val(),
+            state: $('[name=acct-state]').val(),
+            zipCode: $('#acct-zip').val(),
+          }
+        }),
+
+      }).done(function(data) {
+        console.log(data);
+      }).fail(function(jqxhr, textStatus, errorThrown) {
+        console.error(jqxhr.responseText);
+      });
+    },
+    deleteAccount: function() {
+      $.ajax({
+        url: server + '/deleteAccount',
+        method: 'DELETE',
+        xhrFields: {
+          withCredentials: true
+        },
+      }).done(function(data) {
+        console.log(data);
+        showPage.landingPage();
+        MyApi.logOut();
+      }).fail(function(data) {
+        console.error(data);
+      });
+    },
+    getOrders: function(){
+      $.ajax(server + '/orders', {
+        xhrFields: { withCredentials: true }
+      }).done(function(data){
+        console.log(data);
+        // data.orders.forEach(function(order){
+        //   Order.newOrder(order);
+        // });
+      }).fail(function(){
+
+      });
+    },
+    getOrderInfo: function() {
       $.ajax(server + '/orders', {
         xhrFields: {
           withCredentials: true
         }
       }).done(function(data) {
-        // console.log(data);
+        console.log("DATA: ");
+        console.log(data);
+        // Build the orders on the front end
         data.orders.forEach(function(order){
           Order.newOrder(order);
         });
+        console.log("ORDERS: ");
         console.log(Order.orders);
-        // var templatingFunction = Handlebars.compile($('#display-account-template').html());
-        // var html = templatingFunction({account: data});
+
+
+        $('#display-account').html(View.ordersShowHTML({orders: Order.orders}));
+        $('#get-orders, #acct-save, #acct-delete').hide();
       }).fail(function(jqxhr, textStatus, errorThrown) {
         console.error(jqxhr.responseText);
       });
+    },
+    getOrderProductInfo: function(id) {
+      // $.ajax(server + '/orders', {
+      //   xhrFields: {
+      //     withCredentials: true
+      //   }
+      // }).done(function(data) {
+
+      //   console.log(id);
+      //   console.log(data.orders.lineItemInfo);
+      //   data.orders.lineItemInfo.forEach(function(order){
+      //     console.log(order[0].orderId);
+      //   }));
+
+      //   var desiredOrder = data.orders.lineItemInfo.filter(function(order){return order[0].orderId === id;});
+
+      //   console.log(desiredOrder);
+
+      //   Order.newOrder(desiredOrder);
+
+      // }).fail(function(jqxhr, textStatus, errorThrown) {
+      //   console.error(jqxhr.responseText);
+      // });
     }
   }
 })();

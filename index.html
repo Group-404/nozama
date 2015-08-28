@@ -452,7 +452,7 @@
 
   <!-- MY ACCOUNT -->
   <div id="account">
-    <div class="pageheader">My Account</div>
+    <div class="pageheader" id="acct-header">My Account</div>
 
     <div id="display-account"></div>
      <script type="text/x-handlebars-template" id="display-account-template">
@@ -472,70 +472,95 @@
       <label for="acct-city">City:</label>
       <input type="text" name="acct-city" id="acct-city" value="{{profile.city}}">
       <label for="acct-state">State:</label>
-      <span id="state-div">
-        <select name="acct-state" id="acct-state">
-          <option value="AK">AK</option>
-          <option value="AL">AL</option>
-          <option value="AR">AR</option>
-          <option value="AZ">AZ</option>
-          <option value="CA">CA</option>
-          <option value="CO">CO</option>
-          <option value="CT">CT</option>
-          <option value="DC">DC</option>
-          <option value="DE">DE</option>
-          <option value="FL">FL</option>
-          <option value="GA">GA</option>
-          <option value="HI">HI</option>
-          <option value="IA">IA</option>
-          <option value="ID">ID</option>
-          <option value="IL">IL</option>
-          <option value="IN">IN</option>
-          <option value="KS">KS</option>
-          <option value="KY">KY</option>
-          <option value="LA">LA</option>
-          <option value="MA">MA</option>
-          <option value="MD">MD</option>
-          <option value="ME">ME</option>
-          <option value="MI">MI</option>
-          <option value="MN">MN</option>
-          <option value="MO">MO</option>
-          <option value="MS">MS</option>
-          <option value="MT">MT</option>
-          <option value="NC">NC</option>
-          <option value="ND">ND</option>
-          <option value="NE">NE</option>
-          <option value="NH">NH</option>
-          <option value="NJ">NJ</option>
-          <option value="NM">NM</option>
-          <option value="NV">NV</option>
-          <option value="NY">NY</option>
-          <option value="OH">OH</option>
-          <option value="OK">OK</option>
-          <option value="OR">OR</option>
-          <option value="PA">PA</option>
-          <option value="PR">PR</option>
-          <option value="RI">RI</option>
-          <option value="SC">SC</option>
-          <option value="SD">SD</option>
-          <option value="TN">TN</option>
-          <option value="TX">TX</option>
-          <option value="UT">UT</option>
-          <option value="VA">VA</option>
-          <option value="VT">VT</option>
-          <option value="WA">WA</option>
-          <option value="WI">WI</option>
-          <option value="WV">WV</option>
-          <option value="WY">WY</option>
-        </select>
-      </span>
+      <select name="acct-state" id="acct-state">
+        <option value="AK">AK</option>
+        <option value="AL">AL</option>
+        <option value="AR">AR</option>
+        <option value="AZ">AZ</option>
+        <option value="CA">CA</option>
+        <option value="CO">CO</option>
+        <option value="CT">CT</option>
+        <option value="DC">DC</option>
+        <option value="DE">DE</option>
+        <option value="FL">FL</option>
+        <option value="GA">GA</option>
+        <option value="HI">HI</option>
+        <option value="IA">IA</option>
+        <option value="ID">ID</option>
+        <option value="IL">IL</option>
+        <option value="IN">IN</option>
+        <option value="KS">KS</option>
+        <option value="KY">KY</option>
+        <option value="LA">LA</option>
+        <option value="MA">MA</option>
+        <option value="MD">MD</option>
+        <option value="ME">ME</option>
+        <option value="MI">MI</option>
+        <option value="MN">MN</option>
+        <option value="MO">MO</option>
+        <option value="MS">MS</option>
+        <option value="MT">MT</option>
+        <option value="NC">NC</option>
+        <option value="ND">ND</option>
+        <option value="NE">NE</option>
+        <option value="NH">NH</option>
+        <option value="NJ">NJ</option>
+        <option value="NM">NM</option>
+        <option value="NV">NV</option>
+        <option value="NY">NY</option>
+        <option value="OH">OH</option>
+        <option value="OK">OK</option>
+        <option value="OR">OR</option>
+        <option value="PA">PA</option>
+        <option value="PR">PR</option>
+        <option value="RI">RI</option>
+        <option value="SC">SC</option>
+        <option value="SD">SD</option>
+        <option value="TN">TN</option>
+        <option value="TX">TX</option>
+        <option value="UT">UT</option>
+        <option value="VA">VA</option>
+        <option value="VT">VT</option>
+        <option value="WA">WA</option>
+        <option value="WI">WI</option>
+        <option value="WV">WV</option>
+        <option value="WY">WY</option>
+      </select>
       <label for="acct-zip">Zip code:</label>
       <input type="text" name="acct-zip" id="acct-zip" value="{{profile.zipCode}}">
-    </script>
       <a id="acct-save" class="btn btn-md btn-custom" href="#" role="button">Save Changes</a>
 
       <a id="acct-delete" class="btn btn-md btn-custom" href="#" role="button">Delete Account</a>
 
-      <a id="getOrders" class="btn btn-md btn-custom" href="#" role="button">Get Orders</a>
+      <a id="get-orders" class="btn btn-md btn-custom" href="#" role="button">Get Orders</a>
+
+    </script>
+
+  <!-- ORDER HISTORY -->
+  <div id="order-history">
+
+    <div id="display-order-history"></div>
+    <script type="text/x-handlebars-template" id="order-history-template">
+      <p>You have placed {{orders.length}} orders.</p>
+      {{#each orders}}
+        <h4>Order placed: {{formatDate timestamp}}</h4>
+        <p>Order # {{orderId}}</p>
+        <a class="btn btn-md btn-custom order-details" href="#" role="button">See Order Details</a>
+      {{/each}}
+
+    </script>
+
+<!--         <div class="order-show" style="display:hidden">
+          Price: {{price}}
+        </div> -->
+      <a id="myaccount" class="btn btn-md btn-custom" data-id="{{id}}" href="#" role="button">My Account</a>
+
+    <script type="text/x-handlebars-template" id="order-history-product-template">
+      <p>Product name: {{name}}</p>
+    </script>
+<!--     <a id="myaccount" class="btn btn-md btn-custom" href="#" role="button">My Account</a>
+ -->
+  </div>
 
   <script src="node_modules/jquery/dist/jquery.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>

@@ -3,17 +3,17 @@ var Order = (function(){
   var order = {};
   order.orders = [];
 
-  function _createOrder(lineItems) {
-    var order = {};
-    order.items = [];
-    lineItems.forEach(function(lineItem){
+  function _createOrder(order) {
+    order.lineItems.map(function(lineItem){
+
       var product = Catalog.products.filter(function(product){
         return product.id === lineItem.ProductId
       });
+      // debugger;
       lineItem.price = product[0].price;
       lineItem.name = product[0].name;
       lineItem.thumbnailURL = product[0].thumbnailURL;
-      order.items.push(lineItem);
+      return lineItem;
     });
     return order;
   };
