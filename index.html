@@ -429,8 +429,9 @@
     <div class="pageheader">{{product.name}}</div>
 
     <div class="showpage">
-      <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/{{product.imageURL}}" alt="" />
       <p class="textcentered">Price: ${{product.price}}</p>
+      <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/{{product.imageURL}}" alt="" />
+      <p class="textcentered">{{product.description}}</p>
       <p class="buttoncentered blankline">
         <a class="btn btn-md btn-custom buttoncentered" href="#" role="button" data-id='{{product.id}}'>Add to Cart</a>
         <input type="number" id="quantity" placeholder="Quantity">
