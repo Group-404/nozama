@@ -132,18 +132,62 @@ var MyApi = (function(stripeToken){
         console.error(data);
       });
     },
+    getOrders: function(){
+      $.ajax(server + '/orders', {
+        xhrFields: { withCredentials: true }
+      }).done(function(data){
+        console.log(data);
+        // data.orders.forEach(function(order){
+        //   Order.newOrder(order);
+        // });
+      }).fail(function(){
+
+      });
+    },
     getOrderInfo: function() {
       $.ajax(server + '/orders', {
         xhrFields: {
           withCredentials: true
         }
       }).done(function(data) {
+        console.log("DATA: ");
         console.log(data);
-        $('#display-account').html(View.ordersShowHTML({orders: data.orders.orderInfo[0]}));
+        // Build the orders on the front end
+        data.orders.forEach(function(order){
+          Order.newOrder(order);
+        });
+        console.log("ORDERS: ");
+        console.log(Order.orders);
+
+
+        $('#display-account').html(View.ordersShowHTML({orders: Order.orders}));
         $('#get-orders, #acct-save, #acct-delete').hide();
       }).fail(function(jqxhr, textStatus, errorThrown) {
         console.error(jqxhr.responseText);
       });
+    },
+    getOrderProductInfo: function(id) {
+      // $.ajax(server + '/orders', {
+      //   xhrFields: {
+      //     withCredentials: true
+      //   }
+      // }).done(function(data) {
+
+      //   console.log(id);
+      //   console.log(data.orders.lineItemInfo);
+      //   data.orders.lineItemInfo.forEach(function(order){
+      //     console.log(order[0].orderId);
+      //   }));
+
+      //   var desiredOrder = data.orders.lineItemInfo.filter(function(order){return order[0].orderId === id;});
+
+      //   console.log(desiredOrder);
+
+      //   Order.newOrder(desiredOrder);
+
+      // }).fail(function(jqxhr, textStatus, errorThrown) {
+      //   console.error(jqxhr.responseText);
+      // });
     }
   }
 })();

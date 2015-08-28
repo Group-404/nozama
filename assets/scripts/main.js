@@ -172,11 +172,12 @@ $(document).ready(function() {
     MyApi.getOrderInfo();
   });
 
-  // // SEE ORDER DETAILS:
-  // $('#account').on('click', '.order-details', function() {
-  //   var selectedOrderId = $(this).data('id');
-  //   MyApi.getOrderProductInfo(7);
-  // });
+  // SEE ORDER DETAILS:
+  $('#account').on('click', '.order-details', function() {
+    // var selectedOrderId = $(this).data('id');
+    // MyApi.getOrderProductInfo(7);
+    MyApi.getOrders();
+  });
 
   // SEE ACCOUNT FROM ORDER DETAILS:
   $('#account').on('click', '#myaccount', function() {

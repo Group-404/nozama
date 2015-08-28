@@ -529,20 +529,23 @@
     <script type="text/x-handlebars-template" id="order-history-template">
       <p>You have placed {{orders.length}} orders.</p>
       {{#each orders}}
-        <h4>Order placed: {{formatDate createdAt}}</h4>
-        <p>Order # {{id}}</p>
+        <h4>Order placed: {{formatDate timestamp}}</h4>
+        <p>Order # {{orderId}}</p>
         <a class="btn btn-md btn-custom order-details" href="#" role="button">See Order Details</a>
       {{/each}}
-      <a id="myaccount" class="btn btn-md btn-custom" data-id="{{id}}" href="#" role="button">My Account</a>
+
     </script>
+
+<!--         <div class="order-show" style="display:hidden">
+          Price: {{price}}
+        </div> -->
+      <a id="myaccount" class="btn btn-md btn-custom" data-id="{{id}}" href="#" role="button">My Account</a>
 
     <script type="text/x-handlebars-template" id="order-history-product-template">
-      {{#each product}}
-        <p>Product name: {{name}}</p>
-      {{/each}}
-      <a id="myaccount" class="btn btn-md btn-custom" href="#" role="button">My Account</a>
+      <p>Product name: {{name}}</p>
     </script>
-
+<!--     <a id="myaccount" class="btn btn-md btn-custom" href="#" role="button">My Account</a>
+ -->
   </div>
 
   <script src="node_modules/jquery/dist/jquery.js"></script>
