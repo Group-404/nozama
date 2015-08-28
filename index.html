@@ -205,8 +205,10 @@
   <div id="cartpage">
     <div>
       <div class="pageheader">Shopping Cart</div>
+      <h1>Your Cart</h1>
+      <ul id="viewcart"></ul>
       <p class="marginAddCart">Shipping Address:</p>
-      <div id="viewcart"></div>
+
       <label for="name">Name:</label>
       <input type="text" name="name" id="name">
       <label for="address">Address:</label>
@@ -410,12 +412,7 @@
   ************************************************
    -->
   <script id="viewcart-template" type="text/x-handlebars-template">
-    <div class="viewcart">
-      <h1>Your Cart</h1>
-      <ul class="cartItems">
         <li>{{product.name}} Price: ${{product.price}} MSRP: ${{product.msrp}} Qty: {{quantity}}</li>
-      </ul>
-    </div>
   </script>
   <!--
   ************************************************
