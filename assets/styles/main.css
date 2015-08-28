@@ -1,6 +1,6 @@
 body {
   font-family: 'Quicksand';
-  background-color: #FFFFFF;
+  background-color: #D6FFC2;
 }
 
 h1 {
@@ -119,7 +119,7 @@ h2 {
   height: 700px;
 }
 
-#showpage {
+.showpage {
   background-color: white;
   height: 700px;
 }
