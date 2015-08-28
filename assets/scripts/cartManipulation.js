@@ -6,7 +6,7 @@ window.CartManipulation = (function() {
   }
   var remove = function(id) {
     getCart();
-    delete cart[id];
+    delete cart[ProductId];
     saveCart();
   };
   var reduce = function(id, newQty) {

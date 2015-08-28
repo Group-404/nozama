@@ -92,7 +92,7 @@ var showPage = (function(){
       $('#carousel').hide();
       $('#bikepage').hide();
       $('#accessoriespage').hide();
-      $('#showpage').hide();
+      $('#showPage').hide();
       $('#registerpage').hide();
       $('#loginpage').hide();
       $('#account').hide();

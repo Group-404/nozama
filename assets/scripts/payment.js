@@ -19,7 +19,7 @@ var Payment = (function(){
     var cartArray = [];
     Object.keys(cart).forEach(function(cVal) {
       var product = {
-        id : cVal,
+        ProductId : cVal,
         quantity : cart[cVal].quantity
       };
       cartArray.push(product);
