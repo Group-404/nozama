@@ -1,5 +1,5 @@
 {
-  "name": "R-U-Going",
+  "name": "Nozama",
   "version": "0.0.1",
   "description": "Second WDI Project, front-end",
   "main": "app.js",
@@ -9,7 +9,8 @@
   "dependencies": {
     "bootstrap": "^3.3.5",
     "handlebars": "^3.0.3",
-    "jquery": "^2.1.4"
+    "jquery": "^2.1.4",
+    "simplestorage.js": "^0.1.3"
   },
   "devDependencies": {}
 }
