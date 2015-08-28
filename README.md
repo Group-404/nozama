@@ -11,3 +11,4 @@ Back-end repo: https://github.com/Group-404/nozama-api
 
 Planning documents:
 User stories: https://github.com/Group-404/nozama/blob/master/user-stories.txt
+Wireframe: https://github.com/Group-404/nozama/blob/development/nozama.pdf
