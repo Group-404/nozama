@@ -1,6 +1,6 @@
 'use strict';
 
-var server = '//localhost:3000';
+var server = 'http://localhost:3000';
 
 var Catalog = Catalog || {};
 var Order = Order || {};
@@ -200,6 +200,19 @@ $(document).ready(function() {
     MyApi.getOrders();
   });
 
+  // CHECKOUT
+  $('#checkout').on('click', function() {
+    var cart = simpleStorage.get('cart');
+    var cartArray = [];
+    Object.keys(cart).forEach(function(cVal) {
+      var product = {
+        id : cVal,
+        quantity : cart[cVal].quantity
+      };
+      cartArray.push(product);
+    });
+    console.log(cartArray);
+  });
 });
 
 //////////////////////////////////////////////
