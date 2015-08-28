@@ -229,7 +229,8 @@ $(document).ready(function() {
     })
     .done(function(product) {
       $('#viewcart').append(View.viewCartHTML({product: product , quantity: quantity}));
-      console.log("product is: " + product);
+        console.log("product is: " + product);
+        alert('You have added an item to your cart!');
     })
     .fail(function() {
       console.log("error");

@@ -1,6 +1,6 @@
 body {
   font-family: 'Quicksand';
-  background-color: #FFFFFF;
+  background-color: #D6FFC2;
 }
 
 h1 {
@@ -108,7 +108,18 @@ a.navlink:hover {
   padding: 50px 0;
 }
 
+h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: green;
+}
+
 #bikepage {
+  background-color: white;
+  height: 700px;
+}
+
+.showpage {
   background-color: white;
   height: 700px;
 }
@@ -194,13 +205,7 @@ hr {
   padding-top: 300px;
 }
 
-#showpage {
-  background-color: white;
-  height: 700px;
-}
-
 .showpage {
-  float: left;
   width: 100%;
 }
 

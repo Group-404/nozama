@@ -35,7 +35,7 @@
       <div class="btn-group nav login"><a class="navlink" href="#">Login</a></div>
       <div class="btn-group nav myaccount"><a class="navlink" href="#">My Account</a></div>
       <div class="btn-group nav logout"><a class="navlink" href="#">Log Out</a></div>
-      <div class="btn-group headercart viewcart" role="group" aria-label="cart"><a href="#"><img src="http://nozama.s3-us-west-2.amazonaws.com/cart.png" alt=""></a></div>
+      <div class="btn-group headercart viewcart" role="group" aria-label="cart"><a href="#"><img src="http://nozama.s3-us-west-2.amazonaws.com/cart1.png" alt=""></a></div>
     </div>
   </header>
 
@@ -277,7 +277,6 @@
   ************************************************
    -->
 
-  <footer>&copy; 2015 NOZAMA Enterprises, LLC &mdash; All Rights Reserved</footer>
 
   <!--
   ************************************************
@@ -302,17 +301,18 @@
       <div class="pageheader">Bicycles</div>
       {{#each bicycles}}
         <div class="bikepage">
-          <a href="#" class="show showlink">
+          <div class="show showlink">
             <p class="biketitle">{{name}}</p>
             <p class="bikedescription">{{description}}</p>
             <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/{{thumbnailURL}}" alt="" />
-          </a>
+          </div>
 
           <p class="buttoncentered show">
             <a class="btn btn-md btn-custom buttoncentered" data-id={{id}} href="#" role="button">Learn More</a>
           </p>
         </div>
       {{/each}}
+    </div>
     </div>
   </script>
 
@@ -442,13 +442,11 @@
    -->
 
   <script id="show-template" type="text/x-handlebars-template">
-    <div class="pageheader">{{product.name}}</div>
-
     <div class="showpage">
+      <div class="pageheader">{{product.name}}</div>
+      <p class="textcentered">{{product.description}}</p>
       <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/{{product.imageURL}}" alt="" />
-      <p class="textcentered">Price: ${{product.price}} </p>
-
-
+      <p class="textcentered">Price: ${{product.price}}</p>
       <p class="buttoncentered blankline">
         <a class="btn btn-md btn-custom buttoncentered cart" href="#" role="button" data-id='{{product.id}}'>Add to Cart</a>
         <input type="number" id="quantity" placeholder="Quantity">
@@ -580,7 +578,7 @@
  -->
   </div>
 
-
+<footer>&copy; 2015 NOZAMA Enterprises, LLC &mdash; All Rights Reserved</footer>
 
 <script src="https://js.stripe.com/v2/" type="text/javascript"></script>
 <script src="node_modules/jquery/dist/jquery.js"></script>
