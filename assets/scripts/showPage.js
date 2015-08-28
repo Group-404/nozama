@@ -10,6 +10,7 @@ var showPage = (function(){
       $('#registerpage').hide();
       $('#loginpage').hide();
       $('#account').hide();
+      $('#cartpage').hide();
     },
     bikePage: function(){
       event.preventDefault();
