@@ -10,9 +10,12 @@ var View = (function(){
   // var _accessoryIndex = Handlebars.compile($('#accessory-template').html());
   var _itemShow = Handlebars.compile($('#show-template').html());
 
+  var _viewCart = Handlebars.compile($('#viewcart-template').html());
+
   return {
     bicycleIndexHTML : _bicycleIndex,
     // accessoryIndexHTML : _accessoryIndex,
-    itemShowHTML : _itemShow
+    itemShowHTML : _itemShow,
+    viewCartHTML : _viewCart
   };
 })();

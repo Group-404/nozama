@@ -50,7 +50,7 @@ $(document).ready(function() {
   function classShowClickHandler1(event) {
     console.log("show click");
     event.preventDefault();
-    $('#showpage').show();
+    $('#showPage').show();
     $('#carousel').hide();
     $('#bikepage').hide();
     $('.accessoriespage').hide();
@@ -150,6 +150,9 @@ $(document).ready(function() {
     });
   }
 
+// may be used for adding items to viewcart on click of add to cart but wont render the cart until viewcart button has been click.
+
+
 
   // WAT
   window.Main.classShowClickHandler2 = classShowClickHandler2;
@@ -198,6 +201,27 @@ $(document).ready(function() {
   // DISPLAY ORDERS;
   $('#getOrders').on('click', function() {
     MyApi.getOrders();
+  });
+var viewCartList = document.createElement("DIV");
+  $('#showPage').on('click', '.dog', function(event){
+    var quantity = $('#quantity').val();
+
+    $.ajax({
+      url: server + '/products/' + $(this).data('id'),
+      type: 'GET',
+      dataType: 'json',
+    })
+    .done(function(product) {
+      $('#viewcart').append(View.viewCartHTML({product: product , quantity: quantity}));
+      console.log("product is: " + product);
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+
   });
 
   // CHECKOUT

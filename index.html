@@ -404,7 +404,24 @@
   * END: accessory template
   ************************************************
    -->
-
+  <!--
+  ************************************************
+  * START: ViewCart template
+  ************************************************
+   -->
+  <script id="viewcart-template" type="text/x-handlebars-template">
+    <div class="viewcart">
+      <h1>Your Cart</h1>
+      <ul class="cartItems">
+        <li>{{product.name}} Price: ${{product.price}} MSRP: ${{product.msrp}} Qty: {{quantity}}</li>
+      </ul>
+    </div>
+  </script>
+  <!--
+  ************************************************
+  * END: ViewCart template
+  ************************************************
+   -->
   <!--
   ************************************************
   * START: show template
@@ -420,8 +437,8 @@
 
 
       <p class="buttoncentered blankline">
-        <a class="btn btn-md btn-custom buttoncentered cart" href="#" role="button" data-id='{{product.id}}'>Add to Cart</a>
-        <input id="quantity" placeholder="Quantity">
+        <a class="btn btn-md btn-custom buttoncentered dog" href="#" role="button" data-id='{{product.id}}'>Add to Cart</a>
+        <input type="number" id="quantity" placeholder="Quantity">
       </p>
     </div>
   </script>
