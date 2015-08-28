@@ -438,7 +438,7 @@
 
   <!-- MY ACCOUNT -->
   <div id="account">
-    <div class="pageheader">My Account</div>
+    <div class="pageheader" id="acct-header">My Account</div>
 
     <div id="display-account"></div>
      <script type="text/x-handlebars-template" id="display-account-template">
@@ -514,12 +514,36 @@
       </select>
       <label for="acct-zip">Zip code:</label>
       <input type="text" name="acct-zip" id="acct-zip" value="{{profile.zipCode}}">
-    </script>
       <a id="acct-save" class="btn btn-md btn-custom" href="#" role="button">Save Changes</a>
 
       <a id="acct-delete" class="btn btn-md btn-custom" href="#" role="button">Delete Account</a>
 
-      <a id="getOrders" class="btn btn-md btn-custom" href="#" role="button">Get Orders</a>
+      <a id="get-orders" class="btn btn-md btn-custom" href="#" role="button">Get Orders</a>
+
+    </script>
+
+  <!-- ORDER HISTORY -->
+  <div id="order-history">
+
+    <div id="display-order-history"></div>
+    <script type="text/x-handlebars-template" id="order-history-template">
+      <p>You have placed {{orders.length}} orders.</p>
+      {{#each orders}}
+        <h4>Order placed: {{formatDate createdAt}}</h4>
+        <p>Order # {{id}}</p>
+        <a class="btn btn-md btn-custom order-details" href="#" role="button">See Order Details</a>
+      {{/each}}
+      <a id="myaccount" class="btn btn-md btn-custom" data-id="{{id}}" href="#" role="button">My Account</a>
+    </script>
+
+    <script type="text/x-handlebars-template" id="order-history-product-template">
+      {{#each product}}
+        <p>Product name: {{name}}</p>
+      {{/each}}
+      <a id="myaccount" class="btn btn-md btn-custom" href="#" role="button">My Account</a>
+    </script>
+
+  </div>
 
   <script src="node_modules/jquery/dist/jquery.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>

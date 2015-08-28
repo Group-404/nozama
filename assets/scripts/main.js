@@ -157,19 +157,30 @@ $(document).ready(function() {
     MyApi.displayAccountInfo();
   });
 
-  // DISPLAY ORDERS;
-  $('#getOrders').on('click', function() {
-    MyApi.getOrders();
-  });
-
   // SAVE ACCOUNT INFORMATION:
-  $('#acct-save').on('click', function() {
+  $('#account').on('click', '#acct-save', function() {
     MyApi.saveAccountInfo();
   });
 
   // DELETE ACCOUNT INFORMATION:
   $('#acct-delete').on('click', function() {
     MyApi.deleteAccount();
+  });
+
+  // DISPLAY ORDERS:
+  $('#account').on('click', '#get-orders', function() {
+    MyApi.getOrderInfo();
+  });
+
+  // // SEE ORDER DETAILS:
+  // $('#account').on('click', '.order-details', function() {
+  //   var selectedOrderId = $(this).data('id');
+  //   MyApi.getOrderProductInfo(7);
+  // });
+
+  // SEE ACCOUNT FROM ORDER DETAILS:
+  $('#account').on('click', '#myaccount', function() {
+    MyApi.displayAccountInfo();
   });
 
 });

@@ -15,10 +15,8 @@ var MyApi = (function(stripeToken){
         dataType: 'json',
         method: 'POST'
       }).done(function(data, textStatus, jqxhr){
-        // $('#result').val(JSON.stringify(data));
         console.log(data);
       }).fail(function(jqxhr, textStatus, errorThrown){
-        // $('#result').val('registration failed');
         console.error(jqxhr.responseText);
       });
     },
@@ -33,16 +31,13 @@ var MyApi = (function(stripeToken){
         xhrFields: {
           withCredentials: true
         },
-        // dataType: 'json',
         method: 'POST'
       }).done(function(data, textStatus, jqxhr){
         console.log(data);
         $('.myaccount, .logout').show();
         $('.register, .login').hide();
         showPage.landingPage();
-        // simplestorage
       }).fail(function(jqxhr, textStatus, errorThrown){
-        // $('#login-alert').removeClass('hide');
         console.error(jqxhr.responseText);
       });
 
@@ -86,9 +81,7 @@ var MyApi = (function(stripeToken){
       }).done(function(data) {
         console.log(data);
         showPage.accountPage();
-        var templatingFunction = Handlebars.compile($('#display-account-template').html());
-        var html = templatingFunction(data);
-        $('#display-account').html(html);
+        $('#display-account').html(View.accountShowHTML(data));
         $('[name=acct-state]').val(data.profile.state);
       }).fail(function(jqxhr, textStatus, errorThrown) {
         console.error(jqxhr.responseText);
@@ -139,19 +132,15 @@ var MyApi = (function(stripeToken){
         console.error(data);
       });
     },
-    getOrders: function() {
+    getOrderInfo: function() {
       $.ajax(server + '/orders', {
         xhrFields: {
           withCredentials: true
         }
       }).done(function(data) {
-        // console.log(data);
-        data.orders.forEach(function(order){
-          Order.newOrder(order);
-        });
-        console.log(Order.orders);
-        // var templatingFunction = Handlebars.compile($('#display-account-template').html());
-        // var html = templatingFunction({account: data});
+        console.log(data);
+        $('#display-account').html(View.ordersShowHTML({orders: data.orders.orderInfo[0]}));
+        $('#get-orders, #acct-save, #acct-delete').hide();
       }).fail(function(jqxhr, textStatus, errorThrown) {
         console.error(jqxhr.responseText);
       });
