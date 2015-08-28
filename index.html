@@ -290,11 +290,11 @@
       <div class="pageheader">Bicycles</div>
       {{#each bicycles}}
         <div class="bikepage">
-          <a href="#" class="show showlink">
+          <div class="show showlink">
             <p class="biketitle">{{name}}</p>
             <p class="bikedescription">{{description}}</p>
             <img class="centered" src="http://nozama.s3-us-west-2.amazonaws.com/{{thumbnailURL}}" alt="" />
-          </a>
+          </div>
 
           <p class="buttoncentered show">
             <a class="btn btn-md btn-custom buttoncentered" data-id={{id}} href="#" role="button">Learn More</a>
