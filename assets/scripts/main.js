@@ -20,6 +20,8 @@ $(document).ready(function() {
   // invokes carousel
   $('#carousel').carousel();
 
+  $('[data-toggle="popover"]').popover();
+
   // initial state of landing page
 
   showPage.landingPage();
