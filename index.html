@@ -213,33 +213,36 @@
         <div id="cart-result"></div>
         <div id="tax">State tax: 7%</div>
         <div id="shipping">Shipping: 10.00</div>
+        <div id="confirm-user"></div>
         <h3>Please enter your payment information below:</h3>
         <span class="payment-errors"></span>
 
         <div class="form-row">
-          <label>
-            <span>Card Number</span>
-            <input id="card-number" type="text" size="20" data-stripe="number"/>
-          </label>
+          <label for="card-number">Card Number</label>
+          <input id="card-number" type="text" size="20" data-stripe="number"/>
         </div>
 
         <div class="form-row">
-          <label>
-            <span>CVC</span>
-            <input id="card-cvc" type="text" size="4" data-stripe="cvc"/>
-          </label>
+          <label for="card-cvc">CVC</label>
+          <input id="card-cvc" type="text" size="4" data-stripe="cvc"/>
         </div>
 
         <div class="form-row">
           <label>
             <span>Expiration (MM/YYYY)</span></label>
-          <input id="card-exp-month" type="text" size="2" data-stripe="exp-month"/> |
+          <input id="card-exp-month" type="text" size="2" data-stripe="exp-month"/>
           <input id="card-exp-year" type="text" size="4" data-stripe="exp-year"/>
         </div>
 
         <button>Submit Payment</button>
       </form>
     </div>
+  </div>
+
+  <div id="thankspage">
+    <p>Thank you from the Nozama team for shopping with us today!</p>
+    <p>Your order will arrive in 5-7 business days</p>
+    <p>Your confirmation number is: <span id="confirmation-number"></span></p>
   </div>
 
   <!--

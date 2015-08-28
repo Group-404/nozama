@@ -11,6 +11,7 @@ var showPage = (function(){
       $('#loginpage').hide();
       $('#cartpage').hide();
       $('#account').hide();
+      $('#thankspage').hide();
     },
     bikePage: function(){
       event.preventDefault();
@@ -22,6 +23,7 @@ var showPage = (function(){
       $('#loginpage').hide();
       $('#cartpage').hide();
       $('#account').hide();
+      $('#thankspage').hide();
     },
     accessoriesPage: function(){
       event.preventDefault();
@@ -33,6 +35,7 @@ var showPage = (function(){
       $('#loginpage').hide();
       $('#cartpage').hide();
       $('#account').hide();
+      $('#thankspage').hide();
     },
     registerPage: function(){
       event.preventDefault();
@@ -44,6 +47,7 @@ var showPage = (function(){
       $('#loginpage').hide();
       $('#cartpage').hide();
       $('#account').hide();
+      $('#thankspage').hide();
     },
     loginPage: function(){
       event.preventDefault();
@@ -55,6 +59,7 @@ var showPage = (function(){
       $('#registerpage').hide();
       $('#cartpage').hide();
       $('#account').hide();
+      $('#thankspage').hide();
     },
     cartPage: function(){
       event.preventDefault();
@@ -66,6 +71,7 @@ var showPage = (function(){
       $('#registerpage').hide();
       $('#loginpage').hide();
       $('#account').hide();
+      $('#thankspage').hide();
     },
     accountPage: function(){
       event.preventDefault();
@@ -77,6 +83,19 @@ var showPage = (function(){
       $('#showpage').hide();
       $('#registerpage').hide();
       $('#loginpage').hide();
+      $('#thankspage').hide();
+    },
+    thanksPage: function(){
+      event.preventDefault();
+      $('#thankspage').show();
+      $('#cartpage').hide();
+      $('#carousel').hide();
+      $('#bikepage').hide();
+      $('#accessoriespage').hide();
+      $('#showpage').hide();
+      $('#registerpage').hide();
+      $('#loginpage').hide();
+      $('#account').hide();
     }
   }
 })();

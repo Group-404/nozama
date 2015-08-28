@@ -125,6 +125,9 @@ var MyApi = (function(stripeToken){
       }).done(function(data, textStatus, jqxhr){
         console.log(data);
         simpleStorage.set("recent-order", data.amount);
+        simpleStorage.set("cart", "");
+        $("#confirmation-number").html(Math.floor(Math.random() * (9999999 - 1000000)) + 1000000);
+        showPage.thanksPage();
       }).fail(function(jqxhr, textStatus, errorThrown){
         // $('#login-alert').removeClass('hide');
         console.error(jqxhr.responseText);

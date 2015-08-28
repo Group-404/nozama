@@ -164,6 +164,9 @@ $(document).ready(function() {
   // CHECKOUT & PAYMENT
   $('#cart-result').html('lets pretend this came from the cart');
 
+  // if !user, prompt to log in
+  // if user, show profile
+
   Stripe.setPublishableKey('pk_test_2saYaU7cKBb0eV7JGudVl4Jo');
   $('#payment-form').submit(function(event) {
     var $form = $(this);
