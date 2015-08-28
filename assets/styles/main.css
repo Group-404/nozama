@@ -113,6 +113,11 @@ a.navlink:hover {
   height: 700px;
 }
 
+#showpage {
+  background-color: white;
+  height: 700px;
+}
+
 .bikepage {
   float: left;
   width: 50%;
@@ -194,13 +199,7 @@ hr {
   padding-top: 300px;
 }
 
-#showpage {
-  background-color: white;
-  height: 700px;
-}
-
 .showpage {
-  float: left;
   width: 100%;
 }
 
