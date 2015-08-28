@@ -6,7 +6,7 @@ var showPage = (function(){
       $('#carousel').show();
       $('#bikepage').hide();
       $('#accessoriespage').hide();
-      $('#showpage').hide();
+      $('#showPage').hide();
       $('#registerpage').hide();
       $('#loginpage').hide();
       $('#account').hide();
@@ -16,7 +16,7 @@ var showPage = (function(){
       $('#bikepage').show();
       $('#carousel').hide();
       $('#accessoriespage').hide();
-      $('#showpage').hide();
+      $('#showPage').hide();
       $('#registerpage').hide();
       $('#loginpage').hide();
       $('#cartpage').hide();
@@ -27,7 +27,7 @@ var showPage = (function(){
       $('#accessoriespage').show();
       $('#carousel').hide();
       $('#bikepage').hide();
-      $('#showpage').hide();
+      $('#showPage').hide();
       $('#registerpage').hide();
       $('#loginpage').hide();
       $('#cartpage').hide();
@@ -39,7 +39,7 @@ var showPage = (function(){
       $('#carousel').hide();
       $('#bikepage').hide();
       $('#accessoriespage').hide();
-      $('#showpage').hide();
+      $('#showPage').hide();
       $('#loginpage').hide();
       $('#cartpage').hide();
       $('#account').hide();
@@ -50,7 +50,7 @@ var showPage = (function(){
       $('#carousel').hide();
       $('#bikepage').hide();
       $('#accessoriespage').hide();
-      $('#showpage').hide();
+      $('#showPage').hide();
       $('#registerpage').hide();
       $('#cartpage').hide();
       $('#account').hide();
@@ -61,7 +61,7 @@ var showPage = (function(){
       $('#carousel').hide();
       $('#bikepage').hide();
       $('#accessoriespage').hide();
-      $('#showpage').hide();
+      $('#showPage').hide();
       $('#registerpage').hide();
       $('#loginpage').hide();
       $('#account').hide();
@@ -73,9 +73,9 @@ var showPage = (function(){
       $('#carousel').hide();
       $('#bikepage').hide();
       $('#accessoriespage').hide();
-      $('#showpage').hide();
+      $('#showPage').hide();
       $('#registerpage').hide();
       $('#loginpage').hide();
     }
-  }
+  };
 })();

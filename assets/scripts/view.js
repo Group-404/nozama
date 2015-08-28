@@ -18,12 +18,15 @@ var View = (function(){
   var _ordersShow = Handlebars.compile($('#order-history-template').html());
   var _ordersProductsShow = Handlebars.compile($('#order-history-product-template').html());
 
+  var _viewCart = Handlebars.compile($('#viewcart-template').html());
+
   return {
     bicycleIndexHTML : _bicycleIndex,
     // accessoryIndexHTML : _accessoryIndex,
     itemShowHTML : _itemShow,
     accountShowHTML : _accountShow,
     ordersShowHTML : _ordersShow,
-    ordersProductsShowHTML : _ordersProductsShow
+    ordersProductsShowHTML : _ordersProductsShow,
+    viewCartHTML : _viewCart
   };
 })();
