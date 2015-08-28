@@ -108,6 +108,12 @@ a.navlink:hover {
   padding: 50px 0;
 }
 
+h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: green;
+}
+
 #bikepage {
   background-color: white;
   height: 700px;
